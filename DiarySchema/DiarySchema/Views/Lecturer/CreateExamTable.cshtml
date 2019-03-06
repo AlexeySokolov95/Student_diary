@@ -1,0 +1,10 @@
+﻿
+@{
+    Layout = null;
+}
+<h3>Введите дату экзамена</h3>
+@using (Html.BeginForm())
+{
+        <input type="datetime" name="examDate" pattern = "\d{2}\.\d{2}\.\d{4}" title = "Ввели не допустимое значение" placeholder="16.10.1995">
+        <button name = "action" > Сохранить </button >
+}   

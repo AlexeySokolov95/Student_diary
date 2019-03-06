@@ -1,0 +1,12 @@
+﻿@using DiarySchema.Models
+
+@model IEnumerable<TeachersGroupsSubjects>
+
+@foreach (var b in Model)
+            {
+    <tr>
+        <td><p>@b.Groups.GetGroupNumber(Semester.Today())</p></td>
+        <td><p>@b.Teachers.FullName</p></td>
+        <td><p>@b.Subjects.Name</p></td>
+    </tr>
+}

@@ -1,0 +1,27 @@
+﻿
+@{
+    Layout = null;
+}
+
+<div class="col-xs-2 " id="getGroup">
+    <h3 align="center">Группа</h3>
+    <select id="Number" name="Number" class="form-control" style="font-size: 16pt; text-align: center;">
+        @foreach (var p in ViewBag.Groups as SelectList)
+        {
+            <option value="@p.Value">@p.Text</option>
+        }
+    </select>
+</div>
+
+
+    @*@Html.DropDownList("Subject", ViewBag.Subject as SelectList, new { id = "city" })*@
+
+    @*<div id="home" class="tab-pane fade in active home123" name="Subject">
+            <ul class="nav nav-pills  nav-justified">
+                <li><h1>Дисциплина:</h1></li>
+                @foreach (var p in ViewBag.Subject as SelectList)
+                {
+                    <li class="subjectSS" value="@p.Value"><a data-toggle="tab" href="#dd">@p.Text</a></li>
+                }
+            </ul>
+        </div>*@

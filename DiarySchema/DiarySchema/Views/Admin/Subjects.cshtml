@@ -1,0 +1,126 @@
+﻿@using DiarySchema.Models
+@model IEnumerable<Subjects>
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml"; 
+}
+
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-9" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button> <a href="#" class="navbar-brand">Дневник</a>
+        </div>
+        <div class="navbar-collapse collapse in" id="bs-example-navbar-collapse-9" aria-expanded="false">
+            <ul class="nav navbar-nav">
+                <li><a href="#">Моя страница</a></li>
+                <li><a href="/Admin/Students">Студент</a></li>
+                <li class="active"><a href="#">Предмет</a></li>
+                <li><a href="/Admin/Lecturers">Преподаватель</a></li>
+                <li><a href="/Admin/Groups">Группа</a></li>
+                <li><a href="/Admin/Semesters">Семестр</a></li>
+                <li><a href="admin_teacherGroupSubject.html">преподаватель-предмет-группа</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Связь таблиц<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Задачи</a></li>
+                        <li><a href="#">Оценки</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!---->
+<main>
+    <div class="row" style="margin-top: 20px;">
+        <div class="col-xs-5 col-xs-offset-3">
+            <a href="/Admin/AddSubjects" class="btn btn-primary btn-lg btn-block">Добавить предмет</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group">
+        </div>
+        <div class="col-xs-8 col-xs-offset-2">
+            @using (Ajax.BeginForm("SubjectsSearch", new AjaxOptions { UpdateTargetId = "results" }))
+            {
+
+                <input type="text" name="name" placeholder="Предмет" />
+                <input type="text" name="departament" placeholder="Кафедра" style="margin-left: 10px;" />
+                <input type="submit" value="Поиск" />
+            }            
+            <div id="results">
+                <table class="table table-hover table-bordered sort" cellspacing="0" id="rez_tab">
+                    <thead>
+                        <tr style="border: 1px solid #13008A;">
+                            <td>Предмет</td>
+                            <td>Кафедра</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var b in Model)
+                        {
+                            <tr>
+                                <td id="name">@b.Name</td>
+                                <td id="departament">@b.Departament</td>
+                                <td style="border-style: none; width: 85px">
+                                    <a href="/Admin/EditSubjects/@b.Id"><span class="glyphicon glyphicon-edit" title="Редактировать"></span></a>
+                                    <a href="/Admin/DeleteSubjects/@b.Id" data-toggle="modal" role="dialog" data-backdrop="static"><span class="glyphicon glyphicon-remove" title="Удалить"></span></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div id="myModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Заголовок модального окна -->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">Удалить?</h4>
+                </div>
+                <!-- Основное содержимое модального окна -->
+                <div class="modal-body">
+                    Вы уверены что хотитет удалить? Вы уже потом не вернете данные.
+                </div>
+                <!-- Футер модального окна -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                    <button type="button" class="btn btn-danger">Удалить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+@*<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Students</title>
+    @Scripts.Render("~/scripts/jquery-3.1.1.js")
+    @Scripts.Render("~/scripts/jquery.unobtrusive-ajax.min.js")
+</head>
+<body>
+    <div>
+        @using (Ajax.BeginForm("SubjectsSearch", new AjaxOptions { UpdateTargetId = "results" }))
+        {
+
+            <input type="text" name="name" />
+            <input type="text" name="departament" />
+            <input type="submit" value="Поиск" />
+        }
+        <div id="results"></div>
+    </div>
+
+</body>
+</html>*@

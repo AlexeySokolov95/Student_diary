@@ -1,0 +1,95 @@
+﻿
+@{
+    Layout = null;
+}
+@if (ViewBag.IsIndex)
+{
+    if (ViewBag.SubjectCount != 0)
+    {
+        <div id="home" class="tab-pane fade in active home123" name="Subject">
+            <ul class="nav nav-pills  nav-justified">
+                <li><h1>Дисциплина:</h1></li>
+                @foreach (var p in ViewBag.Subject as SelectList)
+                {
+                    <li class="subjectSS" value="@p.Value"><a data-toggle="tab" href="#dd">@p.Text</a></li>
+                }
+            </ul>
+        </div>
+    }
+    else
+    {
+        <div id="home" class="tab-pane fade in active home123" name="Subject">
+            <ul class="nav nav-pills  nav-justified">
+                <li><h1>Дисциплина:</h1></li>
+                @foreach (var p in ViewBag.Subject as SelectList)
+                {
+                    <li class="subjectSS" value="@p.Value"><a data-toggle="tab" href="#dd">Дисциплны нету</a></li>
+                }
+            </ul>
+        </div>
+
+    }
+}
+else
+{
+    if (ViewBag.SubjectCount != 0)
+    {
+        <div class="col-xs-4" id="getSubjects">
+            <h3 align="center">Дисциплина</h3>
+            <select id="Name" name="Name" class="form-control" style="font-size: 16pt; text-align: center;">
+                @foreach (var p in ViewBag.Subject as SelectList)
+                {
+                    <option value="@p.Value">@p.Text</option>
+                }
+            </select>
+        </div>
+    }
+    else
+    {
+        <div class="col-xs-4" id="getSubjects">
+            <h3 align="center">Дисциплина</h3>
+            <select id="Name" name="Name" class="form-control" style="font-size: 16pt; text-align: center;">
+                <option value="-1">  Дисциплны нету</option>
+            </select>
+        </div>
+    }
+}
+@*@if (ViewBag.SubjectCount != 0)
+    {
+        <div id="home" class="tab-pane fade in active home123" name="Subject">
+            <ul class="nav nav-pills  nav-justified">
+                <li><h1>Дисциплина:</h1></li>
+                @foreach (var p in ViewBag.Subject as SelectList)
+                {
+                    <li class="subjectSS" value="@p.Value"><a data-toggle="tab" href="#dd">@p.Text</a></li>
+                }
+            </ul>
+        </div>
+        <div class="col-xs-4" id="getSubjects">
+            <h3 align="center">Дисциплина</h3>
+            <select id="Name" name="Name" class="form-control" style="font-size: 16pt; text-align: center;">
+                @foreach (var p in ViewBag.Subject as SelectList)
+                {
+                    <option value="@p.Value">@p.Text</option>
+                }
+            </select>
+        </div>
+    }
+    else
+    {
+        <div id="home" class="tab-pane fade in active home123" name="Subject">
+            <ul class="nav nav-pills  nav-justified">
+                <li><h1>Дисциплина:</h1></li>
+                @foreach (var p in ViewBag.Subject as SelectList)
+                {
+                    <li class="subjectSS" value="@p.Value"><a data-toggle="tab" href="#dd">Дисциплны нету</a></li>
+                }
+            </ul>
+        </div>
+        <div class="col-xs-4" id="getSubjects">
+            <h3 align="center">Дисциплина</h3>
+            <select id="Name" name="Name" class="form-control" style="font-size: 16pt; text-align: center;">
+                <option value="-1">  Дисциплны нету</option>
+            </select>
+        </div>
+    }*@

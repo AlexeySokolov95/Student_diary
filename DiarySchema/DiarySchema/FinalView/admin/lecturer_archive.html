@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Отметки</title>
+    
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script  type="text/javascript" src="js/jquery-3.2.0.js"></script>
+	<script  type="text/javascript" src="js/js.js"></script>
+    <link href="css/style.css" rel="stylesheet">
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
+
+	<!-- (Optional) Latest compiled and minified JavaScript translation files -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/i18n/defaults-*.min.js"></script>
+
+<!--	 <script>
+		$(document).ready(function(){
+			$("#btn3").click(function(){
+				$(".td").append("<td  style='min-width:83px;'><input class='form-control' id='id_username' maxlength='30' name='username' type='text' style='padding:0px; height:20px;'/></td>");
+				$(".th").append("<th style='min-width:83px;'><input type='date' id='date' name='date' value='2017-03-03'></th>");
+				$(".button").append("<td><button type='button'  class='btn btn-primary btn-xs btn-block'>save</button></td>");
+			});			
+		});
+	  </script>-->
+  </head>
+  <body>
+	
+    <div class="container">
+    	
+	    	<!---->
+	    	<header>
+		    	<div class="row">
+		    		
+		    			<div class="col-xs-12 ">
+			    			<div class=" col-xs-2">	
+				    				<div class="logoImg"> <img src="image/logo.png"></div>		    			
+			    			</div>
+			    			<div class="logoTxt col-xs-5">
+			    				<h1 >Электронный дневник</h1>
+			    			</div>
+
+							<div class=" col-xs-5 ">
+								<div class="">
+	                				<div class="account">
+	                        			<a href="#" >
+	                    				<div class="img-container1"> 
+	                    					<img src="image/face.jpg" alt="лицо отправителя сообщения">
+	                    		   		 </div>                          	
+	                          			</a>      
+	                          			                      
+	                    			</div>
+	                   			</div>
+		                		<div class="col-xs-2 logoTxt">
+		                			<h3 align="left">Фамилия<br> Имя</h3>
+		                			<div class="btn btn-primary">Выйти</div>
+		    	  				</div>                             
+	                    	</div>
+				    	</div>	 
+					
+				</div>	       		
+	    	</header>
+	    	<!---->
+	    	<nav class="navbar navbar-inverse"> 
+				<div class="container-fluid"> 
+					<div class="navbar-header"> 
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-9" aria-expanded="false">
+ 						<span class="sr-only">Toggle navigation</span>
+ 						<span class="icon-bar"></span>
+  						<span class="icon-bar"></span>  						 
+  						</button> <a href="#" class="navbar-brand">Дневник</a> 
+ 					</div> 
+	  				<div class="navbar-collapse collapse in" id="bs-example-navbar-collapse-9" aria-expanded="false">
+	  					 <ul class="nav navbar-nav">
+	    					<li ><a href="#">Моя страница</a></li>
+	    					<li ><a href="#">Предмет</a></li>
+	     					<li class="active"><a href="#">Учитель</a></li>
+	     					<li ><a href="#">Группа-предмет-преподователь</a></li>
+	     					<li ><a href="#">Задачи</a></li>
+	     					<li ><a href="#">таблица классоф</a></li>
+	     					<li ><a href="#">Журнал</a></li>
+	     					<li ><a href="#">Группа</a></li>
+	     					<li ><a href="#">Семестр</a></li>
+	     					<li ><a href="#">Студент</a></li>
+	      				</ul> 
+	      			</div> 
+      			</div> 
+     		 </nav>
+	    	<!---->
+	    	<main>
+	  			<select class="selectpicker" data-live-search="true" tabindex="-98">
+					<option>Hot Dog, Fries and a Soda</option>
+					<option>Burger, Shake and a Smile</option>
+					<option>Sugar, Spice and all things nice</option>
+				</select>
+ 				
+<!-- 				<div class="container">-->
+ 					<div class="row">
+ 						<div class="col-xs-12">
+ 							<table class="table table-bordered table-hover">
+ 								<tr>
+									<th><input type="text" style="width: 40px;" class="form-control" placeholder="Text input"></th>
+ 									<th><input type="text" style="width: 40px;" class="form-control" placeholder="Text input"></th>
+ 									<th><input type="text" style="width: 40px;" class="form-control" placeholder="Text input"></th>
+ 									<th><input type="text" style="width: 40px;" class="form-control" placeholder="Text input"></th>
+ 									<th><input type="text" style="width: 40px;" class="form-control" placeholder="Text input"></th>
+ 									<th><input type="text" style="width: 40px;" class="form-control" placeholder="Text input"></th>
+ 									<th><input type="text" style="width: 40px;" class="form-control" placeholder="Text input"></th>
+ 									<th><button class="btn btn-default" aria-label="Left Align"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button> </th>
+ 								</tr>
+ 							</table>
+ 						</div>
+ 					</div>
+<!-- 				</div>-->
+ 				
+ 				
+ 				
+<!-- 				<div class="container">-->
+ 					<div class="row">
+ 						<div class="col-xs-12">
+ 							<table class="table table-bordered table-hover">
+ 								<tr>
+ 									<th>Number</th>
+ 									<th>FullName</th>
+ 									<th>YearOfBirth</th>
+ 									<th>GroipId</th>
+ 									<th>Photo</th>
+ 									<th>UserName</th>
+ 									<th>Email</th>
+ 								</tr>
+ 								<tr>
+ 									<td>Number</td>
+ 									<td>FullName</td>
+ 									<td>YearOfBirth</td>
+ 									<td>GroipId</td>
+ 									<td>Photo</td>
+ 									<td>UserName</td>
+ 									<td>Email</td>
+ 								</tr>
+ 							</table>
+ 						</div>
+ 					</div>
+<!-- 				</div>-->
+  				
+	  					 			
+   			</main>
+	    	<!---->
+	    	<footer>
+	    	<div class="row">
+	    	<div class="col-xs-12">
+				<div style="float: right"> <h5>Все права защищены © 2017</h5>по всем вопросам пишите по адресу vlad@htmlbook.ru </div>
+    			<div style="float: left">Создатели сайта: <ul><li>Юрьев Игорь</li><li>Соколов Алексей</li></ul>
+    		</div>
+				</div>
+				</div>
+	    	</footer>
+    	</div>
+	     
+	 <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>

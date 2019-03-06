@@ -1,0 +1,62 @@
+﻿
+@{
+    Layout = null;
+}
+@using DiarySchema.Models
+@model ApplicationsForRegistration
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ConfirmStudentRegistration</title>
+    @Scripts.Render("~/scripts/jquery-3.1.1.js")
+    @Scripts.Render("~/scripts/jquery.unobtrusive-ajax.min.js")
+</head>
+<body>
+    <div> 
+        @if (Model != null)
+        {
+        <tr>
+            <td><p>@Model.FirstName<p></td>
+            <td><p>@Model.SecondName<p></td>
+            <td><p>@Model.MiddleName<p></td>
+            <td><p>@Model.Groups.GetGroupNumber(Semester.Today())</p></td>
+            <td><p>@Model.CardNumber<p></td>
+            <td><p>@Model.Email<p></td>
+            <td><p>@Model.DateOfBirth.Date<p></td>
+            <td><p>@Model.Login<p></td>
+            <td><p>@Model.Password<p></td>
+
+        </tr>
+        }
+    </div>
+    <br />
+    <br />
+    <div>
+        <p> студентики</p>
+        @using (Ajax.BeginForm("StudentsSearchForApplication", new AjaxOptions { UpdateTargetId = "results" }))
+        {
+            <input type="text" name="number" />
+            <input type="text" name="fullName" />
+            <input type="text" name="groupNumber" />
+            <input type="submit" value="Поиск" />
+            @Html.Hidden("applicationId", Model.Id)
+        }
+    </div>
+    <div id="results">
+        @if (ViewBag.FoundStudents.Count !=0)
+        {
+            foreach (var b in ViewBag.FoundStudents)
+            {
+            <tr>
+                <td><p>@b.FullName</p></td>
+                <td><p>@b.Number</p></td>
+                <td><p>@b.YearOfBirth</p></td>
+                @Html.ActionLink("Привязать", "CompletionStudentRegistration", new { applicationId = Model.Id, studentId = b.Id });
+            </tr>
+            }
+        }
+    </div>
+</body>
+</html>

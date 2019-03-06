@@ -1,0 +1,27 @@
+﻿
+@{
+    Layout = null;
+}
+@if (ViewBag.Subject1 != 0)
+{
+    <div class="col-xs-4" id="getSubjects">
+        <h3 align="center">Дисциплина</h3>
+        <select id="Name" name="Name" class="form-control" style="font-size: 16pt; text-align: center;">
+            @foreach (var p in ViewBag.Subjects as SelectList)
+            {
+                <option value="@p.Value">@p.Text</option>
+            }
+        </select>
+    </div>
+}
+else
+{
+    <div class="col-xs-4" id="getSubjects">
+        <h3 align="center">Дисциплина</h3>
+        <select id="Name" name="Name" class="form-control" style="font-size: 16pt; text-align: center;">
+            <option value="-1">  Дисциплны нету</option>
+        </select>
+    </div>
+}
+
+

@@ -1,0 +1,125 @@
+﻿@model DiarySchema.Models.Semester
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdminAdd.cshtml";
+}
+
+<main>
+    <div class="row" style="padding-top: 30px;padding-bottom: 30px;">
+        <div class="container">
+            <h1 align="center">Семестр</h1>
+            <div class="container col-xs-6 col-xs-offset-3" style="border:solid; background-color:#93FE83; padding:10px; border-radius: 20px;">
+                @using (Html.BeginForm())
+                {
+                    @*@Html.AntiForgeryToken()*@
+                    <div class="form-group">
+                        <p class="control-label col-xs-6">Начало семестра:</p>
+                        <div class="col-xs-6">
+                            <p>@Model.BeginningDate</p>
+                            @*<input type="date" class="form-control" id="BeginningDate" name="BeginningDate" placeholder="Введите начало семестра" required>
+                            <div class="help-block with-errors"></div>*@
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <p class="control-label col-xs-6">Конец семестра:</p>
+                        <div class="col-xs-6">
+                            <p>@Model.EndDate</p>
+                            @*<input type="date" class="form-control" id="EndDate" name="EndDate" placeholder="Введите конец семестра" required>
+                            <div class="help-block with-errors"></div>*@
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <p class="control-label col-xs-6">№:</p>
+                        <div class="col-xs-6">
+                            <p>@Model.Number</p>
+                            @*<select class="form-control" id="Number" name="Number">
+                                <option>1</option>
+                                <option>2</option>
+                            </select>*@
+                            @*<input type="text" class="form-control" id="Number" name="Number" placeholder="№" required pattern="\d{6}" title="только 6 цифр" data-error="только 6 цифр">*@
+                            @*<div class="help-block with-errors"></div>*@
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <p class="control-label col-xs-6">Год:</p>
+                        <div class="col-xs-6">
+                            <p>@Model.Year</p>
+                            @*<input type="text" class="form-control" id="Year" name="Year" placeholder="2016|2017" required pattern="\d{4}\|\d{4}" title="Неправильно ввели 2016|2017" data-error="Неправильно ввели 2016|2017">
+                            <div class="help-block with-errors"></div>*@
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-xs-offset-6">
+                        <input type="hidden" value=@ViewBag.Id name="Id" />
+                        <input type="submit" value="Удалить"  class="btn btn-danger"/>
+                        @*<button type="submit" class="btn btn-primary" value="Create" id="add">Добавить</button>
+                        <button type="submit" class="btn btn-danger" id="addYet">Добавить еще</button>
+                        <button type="reset" class="btn btn-default" id='reset'>Очисить форму</button>*@
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</main>
+
+
+@*<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>DeleteSemester</title>
+</head>
+<body>
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>Semester</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.BeginningDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.BeginningDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.EndDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.EndDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Number)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Number)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Year)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Year)
+            </dd>
+    
+        </dl>
+    
+@using (Html.BeginForm())
+{
+    <input type="hidden" value=@ViewBag.Id name="Id" />
+    <input type="submit" value="Удалить" />
+}
+    
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+</body>
+</html>*@

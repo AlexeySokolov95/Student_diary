@@ -1,0 +1,95 @@
+﻿@model DiarySchema.Models.Students
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdminAdd.cshtml";
+}
+
+<main>
+    <div class="row" style="padding-top: 30px;padding-bottom: 30px;">
+        <div class="container">
+            <h1 align="center">Студент</h1>
+            <div class="container col-xs-6 col-xs-offset-3" style="border:solid; background-color:#93FE83; padding:10px; border-radius: 20px;">
+                @using (Html.BeginForm("EditStudents", "Admin", FormMethod.Post, new { name = "ValidationForm", role = "form", data_toggle = "validator", novalidate = "true", id = "addAdmin" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(m => m.Id)
+                    <div class="form-group">
+                        <label class="control-label col-xs-6" for="Number">№:</label>
+                        <div class="col-xs-6">
+                            <input type="text"  value="@Model.Number" class="form-control" id="Number" name="Number" placeholder="№" required pattern="\d{6}" title="только 6 цифр" data-error="только 6 цифр">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-6" for="FullName">Ф. И. О.:</label>
+                        <div class="col-xs-6">
+                            <input type="text" value="@Model.FullName" class="form-control" id="FullName" name="FullName" placeholder="Введите Ф. И. О." required pattern="^[А-Яа-яЁё\s]+$" title="Ввод только руcскими буквами" data-error="Ввод только руcскими буквами">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-6" for="YearOfBirth">Год рождения:</label>
+                        <div class="col-xs-6">
+                            <input type="number" value="@Model.YearOfBirth" class="form-control" id="YearOfBirth" name="YearOfBirth" placeholder="Введите год рождения" required min="1930" max="2020" title="Год рождения в интервале 1930-2020" data-error="Год рождения в интервале 1930-2020">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-6" for="GroupId">Номер группы:</label>
+                        <div class="col-xs-6">
+                            @Html.DropDownListFor(m => Model.GroupId, ViewBag.Groups as SelectList, new { @class = "form-control", title = "год рождения в интервале 1930-2020", required = "required" })
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-6" for="Email">Адрес электронной почты:</label>
+                        <div class="col-xs-6">
+                            <input type="email"  value="@Model.Email" class="form-control" id="Email" name="Email" placeholder="Введите адрес электронной почты" data-error="Введите адрес электронной почты">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="col-xs-9 col-xs-offset-3">                        
+                        <button type="submit" value="Create" class="btn btn-primary">Добавить</button>                       
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</main>
+
+
+@*<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>EditStudents</title>
+</head>
+<body>
+    @using (Html.BeginForm("EditStudents", "Admin", FormMethod.Post))
+    {
+            @Html.HiddenFor(m => m.Id)
+        @Html.LabelFor(m => m.FullName, "Имя")
+        <br />
+        @Html.EditorFor(m => m.FullName)
+        <br />
+        @Html.LabelFor(m => m.Number, "Номер зачётки")
+        <br />
+        @Html.EditorFor(m => m.Number)
+        <br />
+        @Html.LabelFor(m => m.YearOfBirth, "Год рождения")
+        <br />
+        @Html.EditorFor(m => m.YearOfBirth)
+        <br />
+        @Html.LabelFor(m => m.GroupId, "id группы")
+        <br />
+        @Html.DropDownListFor(m => Model.GroupId, ViewBag.Groups as SelectList)
+        <br />
+        @Html.LabelFor(m => m.Email, "Email")
+        <br />
+        @Html.EditorFor(m => m.Email)
+        <p><input type="submit" value="Отправить" /></p>
+    }
+
+    </body>
+</html>*@

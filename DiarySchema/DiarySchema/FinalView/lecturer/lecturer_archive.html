@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Отметки</title>
+    
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script  type="text/javascript" src="js/jquery-3.2.0.js"></script>
+	<script  type="text/javascript" src="js/js.js"></script>
+    <link href="css/style.css" rel="stylesheet">
+
+<!--	 <script>
+		$(document).ready(function(){
+			$("#btn3").click(function(){
+				$(".td").append("<td  style='min-width:83px;'><input class='form-control' id='id_username' maxlength='30' name='username' type='text' style='padding:0px; height:20px;'/></td>");
+				$(".th").append("<th style='min-width:83px;'><input type='date' id='date' name='date' value='2017-03-03'></th>");
+				$(".button").append("<td><button type='button'  class='btn btn-primary btn-xs btn-block'>save</button></td>");
+			});			
+		});
+	  </script>-->
+  </head>
+  <body>
+	
+    <div class="container">
+    	
+	    	<!---->
+	    	<header>
+		    	<div class="row">
+		    		
+		    			<div class="col-xs-12 ">
+			    			<div class=" col-xs-2">	
+				    				<div class="logoImg"> <img src="image/logo.png"></div>		    			
+			    			</div>
+			    			<div class="logoTxt col-xs-5">
+			    				<h1 >Электронный дневник</h1>
+			    			</div>
+
+							<div class=" col-xs-5 ">
+								<div class="">
+	                				<div class="account">
+	                        			<a href="#" >
+	                    				<div class="img-container1"> 
+	                    					<img src="image/face.jpg" alt="лицо отправителя сообщения">
+	                    		   		 </div>                          	
+	                          			</a>      
+	                          			                      
+	                    			</div>
+	                   			</div>
+		                		<div class="col-xs-2 logoTxt">
+		                			<h3 align="left">Фамилия<br> Имя</h3>
+		                			<div class="btn btn-primary">Выйти</div>
+		    	  				</div>                             
+	                    	</div>
+				    	</div>	 
+					
+				</div>	       		
+	    	</header>
+	    	<!---->
+	    	<nav class="navbar navbar-inverse"> 
+				<div class="container-fluid"> 
+					<div class="navbar-header"> 
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-9" aria-expanded="false">
+ 						<span class="sr-only">Toggle navigation</span>
+ 						<span class="icon-bar"></span>
+  						<span class="icon-bar"></span>  						 
+  						</button> <a href="#" class="navbar-brand">Дневник</a> 
+ 					</div> 
+	  				<div class="navbar-collapse collapse in" id="bs-example-navbar-collapse-9" aria-expanded="false">
+	  					 <ul class="nav navbar-nav">
+	    					<li ><a href="lecturer_my_page.html">Моя страница</a></li>
+	    					<li ><a href="lecturer_mark.html">Дисциплина</a></li>
+	     					<li class="active"><a href="#">Архив</a></li>
+	     					<li ><a href="lecturer_create_table.html">Преподаватель-группа-предмет</a></li>
+	      				</ul> 
+	      			</div> 
+      			</div> 
+     		 </nav>
+	    	<!---->
+	    	<main>
+	  			<!-- <div class="container"> -->
+	  			 <!--выбора года меметра группы предмета-->
+	  				<div class="row">
+	  					<div class="col-xs-2 col-xs-offset-1">
+	  						<h3 align="center">Год обучения</h3>
+	  						<select  class="form-control" id="sel1" style=" font-size: 16pt; text-align: center;">
+							<option>2015/2016</option>
+							<option>2015/2016</option>
+							<option>2016/2017</option>
+							<option>2016/2017</option>
+							<option>2017/2018</option>
+						  </select>
+	  					</div>
+	  					<div class="col-xs-2 ">
+	  						<h3 align="center">Семестр</h3>
+	  						<select  class="form-control" id="sel2" style=" font-size: 16pt; text-align: center;">
+							<option>1 семестр</option>
+							<option>2 семестр</option>							
+						  </select>
+	  					</div>
+	  					<div class="col-xs-2 ">
+	  						<h3 align="center">Группа</h3>
+	  						<select  class="form-control" id="sel3" style=" font-size: 16pt; text-align: center;">
+							<option>1490</option>
+							<option>1590</option>							
+						  </select>
+	  					</div>
+	  					<div class="col-xs-4 ">
+	  						<h3 align="center">Предмет</h3>
+	  						<select  class="form-control" id="sel4" style=" font-size: 16pt; text-align: center;">
+							<option>Проектирование интерфейса</option>
+							<option>1590</option>							
+						  </select>
+	  					</div>
+	  				</div> 
+	  					<div class="row">
+	  						<div class="col-xs-10 col-xs-offset-1">
+	  							<button type="button" class="btn btn-primary btn-lg btn-block">Обработать</button>
+							</div>
+						</div>
+						<!--конец выбора года меметра группы предмета-->
+						
+					<h1 align="center"><b style="border-bottom-style: solid">"Проектирование интерфейсов"</b></h1>
+  			<div class="row">
+				<div class="col-xs-2" style="padding-right: 0px; padding-bottom: 0px; padding-left: 25px;">
+					<div class="table-responsive">
+						<table class="table table-bordered   table-condensed" >
+							<tr>
+								<th width="20px" height="82px" style="vertical-align: middle; background-color: #B0DCF6;">№</th>
+								<th style="vertical-align: middle; text-align: center; background-color: #B0DCF6;">Группа</th>
+							</tr>
+							<tr>
+								<td style="padding-top:3px; padding-bottom: 3px; background-color: #B0DCF6;">1</td>
+								<td style="padding-top:3px; padding-bottom: 3px; background-color: #B0DCF6;">Антимонов</td>
+							</tr>
+							<tr>
+								<td style="padding-top:3px; padding-bottom: 3px; background-color: #B0DCF6;">2</td>
+								<td style="padding-top:3px; padding-bottom: 3px; background-color: #B0DCF6;">Гурьев</td>
+							</tr>
+							<tr>
+								<td style="padding-top:3px; padding-bottom: 3px; background-color: #B0DCF6;">3</td>
+								<td style="padding-top:3px; padding-bottom: 3px; background-color: #B0DCF6;">Гусаков</td>
+							</tr>   				
+						</table>
+					</div>
+	  			</div>
+	  			<div class="col-xs-10" style="padding-left: 0px; padding-bottom: 0px; padding-right: 25px;">
+					<div class="table-responsive">
+						<table class="table table-bordered   table-condensed" >
+							<tr class="th">
+								<th colspan="2" style="min-height:76px; height: 30px; text-align: center; background-color: #E9E4E4;">Месяц</th>		
+							</tr >
+							<tr class="th">
+								<th style="min-height:76px; height: 43px; background-color: #E9E4E4;">10<br>вт</th>
+								<th  style="background-color: #E9E4E4;">10<br>вт</th>
+							</tr >
+							<tr >
+								<td style="padding: 0px;"><input type="text" name="1" style="width: 100%;"></td>
+								<td style="padding: 0px;"><input type="text" name="1" style="width: 100%;"></td>
+							</tr>
+							<tr >
+								<td style="padding: 0px;"><input type="text" name="1" style="width: 100%;"></td>
+								<td style="padding: 0px;"><input type="text" name="1" style="width: 100%;"></td>
+							</tr>
+							<tr >
+								<td style="padding: 0px;"><input type="text" name="1" style="width: 100%;"></td>
+								<td style="padding: 0px;"><input type="text" name="1" style="width: 100%;"></td>
+							</tr>												 				
+						</table>
+					</div>
+	  			</div>
+	  		</div>
+	  		<div class="row">
+	  			<div class="col-xs-3 col-xs-offset-8">
+	  				<button type="button" class="btn btn-danger btn-block"><b>Сохранить</b></button> 
+	  			</div>
+	  		</div>
+	  	
+	<div class="row">
+   <div class="col-xs-5 " style="padding-left: 25px;"> 
+   	  <h2 align="center" style="color: #f24447"><b>Экзамен</b></h2>
+   	  	<table class="table table-bordered table-hover" style="background-color:#f57173;">
+   	  		<tr>
+   	  			<th>Студенты</th>
+   	  			<th>Оценки</th>
+   	  		</tr>
+   	  		<tr>
+   	  			<td>Антимонов Даниил</td>
+   	  			<td>5</td>
+   	  		</tr>
+   	  		<tr>
+   	  			<td>Гурьев Михаил</td>
+   	  			<td>5</td>
+   	  		</tr>
+   	  		<tr>
+   	  			<td>Гусаков Никита</td>
+   	  			<td>5</td>
+   	  		</tr>
+   	  		<tr>
+   	  			<td style="border: none; background-color: #BAEFB3"></td>
+   	  			<td><button type="button" data-toggle="modal" data-target="#EditModal"  class="btn btn-primary btn-xs btn-block">edit</button></td>
+   	  		</tr>
+   	  	</table>
+   		
+   		<!-- Modal -->
+			<div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			        <h4 class="modal-title" id="myModalLabel">Навзвание предмета(дисциплина)</h4>			        
+			      </div>
+
+			<div class="modal-body">
+
+				<form>
+					<table class="table table-bordered  table-condensed" >
+		   	  		<tr>
+		   	  			<th>Студенты</th>
+		   	  			<th>Оценки</th>
+		   	  		</tr>
+		   	  		<tr>
+		   	  			<td>Антимонов Даниил</td>
+		   	  			<td style="padding: 0px;"><input type="text" name="1" style="width: 100%;" value="5" pattern="\d" title="1 цифра"></td>
+		   	  		</tr>
+		   	  		<tr>
+		   	  			<td>Гурьев Михаил</td>
+		   	  			<td style="padding: 0px;"><input type="text" name="1" style="width: 100%;" value="5" pattern="\d" title="1 цифра"></td>
+		   	  		</tr>
+		   	  		<tr>
+		   	  			<td>Гусаков Никита</td>
+		   	  			<td style="padding: 0px;"><input type="text" name="1" style="width: 100%;" value="5" pattern="\d" title="1 цифра"></td>
+		   	  		</tr>		   	  			
+		   	  	</table>
+		   	  	<input type="submit"  class="btn btn-danger btn-lg btn-block">
+		   	  		</form>
+			      </div>
+
+			    </div>
+			  </div>
+			</div> <!-- /#myModal -->
+   
+   
+   	  </div>
+	  <div class="col-xs-3 col-xs-offset-1">
+		  <h2 align="center" style="color: #3aaccf"><b>Староста</b></h2>
+	  	<table class="table table-bordered table-hover" style="background-color: #71ecf5";>
+	  		<tr>
+	  			<td>Ф. И.</td>
+	  			<th>Летов Николай</th>
+	  		</tr>
+	  		<tr>
+	  			<td>Телефон</td>
+	  			<th>+7921430-56-43</th>
+	  		</tr>
+	  		<tr>
+	  			<td>почта</td>
+	  			<th>letov.nikolay@gmail.ru</th>
+	  		</tr>
+	  	</table>
+	  </div>
+	<!-- </div> -->
+	<!-- </div>	 -->
+	
+  
+   <!--Конец журнала-->
+						
+	  			</div>	  			  			
+   			</main>
+	    	<!---->
+	    	<footer>
+	    	<div class="row">
+	    	<div class="col-xs-12">
+				<div style="float: right"> <h5>Все права защищены © 2017</h5>по всем вопросам пишите по адресу vlad@htmlbook.ru </div>
+    			<div style="float: left">Создатели сайта: <ul><li>Юрьев Игорь</li><li>Соколов Алексей</li></ul>
+    		</div>
+				</div>
+				</div>
+	    	</footer>
+    	</div>
+	     
+		<script type="text/javascript">
+			$("#select").on('change', function(){
+   				 if($(this).val() == 3){
+	    			$("#input").show();
+				} else {
+	   				 $("#input").hide();
+				}
+			})
+		</script>
+
+	 <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>

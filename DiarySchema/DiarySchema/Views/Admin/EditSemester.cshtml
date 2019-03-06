@@ -1,0 +1,126 @@
+﻿@model DiarySchema.Models.Semester
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdminAdd.cshtml";
+}
+
+<main>
+    <div class="row" style="padding-top: 30px;padding-bottom: 30px;">
+        <div class="container">
+            <h1 align="center">Семестр</h1>
+            <div class="container col-xs-6 col-xs-offset-3" style="border:solid; background-color:#93FE83; padding:10px; border-radius: 20px;">
+                @using (Html.BeginForm("EditSemester", "Admin", FormMethod.Post, new { name = "ValidationForm", role = "form", data_toggle = "validator", novalidate = "true", id = "addAdmin" }))
+                {
+                    @Html.HiddenFor(model => model.Id)
+                    @Html.AntiForgeryToken()
+                    <div class="form-group">
+                        <label class="control-label col-xs-6" for="BeginningDate">Начало семестра:</label>
+                        <div class="col-xs-6">
+                            <input type="text" value="@Model.BeginningDate" class="form-control" id="BeginningDate" name="BeginningDate" placeholder="Введите начало семестра" required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-6" for="EndDate">Конец семестра:</label>
+                        <div class="col-xs-6">
+                            <input type="text" value="@Model.EndDate" class="form-control" id="EndDate" name="EndDate" placeholder="Введите конец семестра" required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-6" for="Number">№:</label>
+                        <div class="col-xs-6">
+                            <select class="form-control" id="Number" name="Number">
+                                <option>@Model.Number</option>
+                                <option>1</option>
+                                <option>2</option>
+                            </select>
+                            @*<input type="text" class="form-control" id="Number" name="Number" placeholder="№" required pattern="\d{6}" title="только 6 цифр" data-error="только 6 цифр">*@
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-6" for="Year">Год:</label>
+                        <div class="col-xs-6">
+                            <input type="text" value="@Model.Year" class="form-control" id="Year" name="Year" placeholder="2016|2017" required pattern="\d{4}\|\d{4}" title="Неправильно ввели 2016|2017" data-error="Неправильно ввели 2016|2017">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-6 col-xs-offset-6">
+                        <button type="submit" class="btn btn-primary" value="Edit" id="add">Изменить</button>
+                        @*<button type="submit" class="btn btn-danger" id="addYet">Добавить еще</button>
+                        <button type="reset" class="btn btn-default" id='reset'>Очисить форму</button>*@
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</main>
+
+
+
+@*<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>EditSemester</title>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        
+        <div class="form-horizontal">
+            <h4>Semester</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id)
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.BeginningDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.BeginningDate, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.BeginningDate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.EndDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <label class="control-label col-md-2" for="Number">Number</label>
+                <div class="col-md-10">
+                    <input class="form-control text-box single-line" data-val="true" data-val-length="Поле Number должно иметь строковое значение, максимальная длина которого — 128." data-val-length-max="128" data-val-required="Требуется поле Number." id="Number" name="Number" type="number" value="7" />
+                    <span class="field-validation-valid text-danger" data-valmsg-for="Number" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.Year, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Year, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Year, "", new { @class = "text-danger" })
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+    
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</body>
+</html>*@

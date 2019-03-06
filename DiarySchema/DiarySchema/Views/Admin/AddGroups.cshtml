@@ -1,0 +1,165 @@
+﻿@model DiarySchema.Models.Groups
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdminAdd.cshtml";
+}
+
+
+<main>
+    <div class="row" style="padding-top: 30px;padding-bottom: 30px;">
+        <div class="container">
+
+            <h1 align="center">Группа</h1>
+            <div class="container col-xs-6 col-xs-offset-3" style="border:solid; background-color:#93FE83; padding:10px; border-radius: 20px;">
+
+            @using (Html.BeginForm("AddGroups", "Admin", FormMethod.Post, new { name = "ValidationForm", role = "form", data_toggle = "validator", novalidate = "true", id = "addAdmin" }))
+            {
+                @Html.AntiForgeryToken()
+                    <div class="form-group">
+                        <label class="control-label col-xs-6" for="Number">№:</label>
+                        <div class="col-xs-6">
+                            <input type="text" class="form-control" id="Number" name="Number" placeholder="№" required pattern="\d{4}" title="только 4 цифр" data-error="только 4 цифр">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-6" for="YearOfAdmission">Год поступления:</label>
+                        <div class="col-xs-6">
+                            <input type="number" class="form-control" id="YearOfAdmission" name="YearOfAdmission"  placeholder="Введите год поступления" required pattern="[0-9]{4}" min="1930" max="2050" title="Год поступления в интервале 1930-2050" data-error="Год поступления в интервале 1930-2050">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-6" for="Faculty">Факультет:</label>
+                        <div class="col-xs-6">
+                            <select class="form-control" id="Faculty" name="Faculty">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                            </select>
+                            @*<input type="text" class="form-control" id="Faculty" name="Faculty" placeholder="Введите факультет" required pattern="^[А-Яа-яЁё\s]+$" title="Ввод только руcскими буквами" data-error="Ввод только руcскими буквами">*@
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-6" for="Degree">Высшее образование:</label>
+                        <div class="col-xs-6">
+                            <select class="form-control" id="Degree" name="Degree">
+                                <option>Бакалавриат</option>
+                                <option>Специалиет</option>
+                                <option>Магистратура</option>                                
+                            </select>
+                            @*<input type="text" class="form-control" id="Degree" name="Degree" placeholder="Введите Degree" required pattern="^[А-Яа-яЁё\s]+$" title="Ввод только руcскими буквами" data-error="Ввод только руcскими буквами">*@
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-6" for="FormOfStudy">Форма обучения:</label>
+                        <div class="col-xs-6">
+                            <select class="form-control" id="FormOfStudy" name="FormOfStudy">
+                                <option>Очная</option>
+                                <option>Очнао-заочная</option>
+                                <option>Заочная</option>
+                                <option>Экстернат</option>
+                            </select>
+                            @*<input type="text" class="form-control" id="FormOfStudy" name="FormOfStudy" placeholder="Введите форма обучения" required pattern="^[А-Яа-яЁё\s]+$" title="Ввод только руcскими буквами" data-error="Ввод только руcскими буквами">*@
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <!-- староста группы 
+
+                    <div class="form-group">
+                        <label class="control-label col-xs-6" for="MonitorId">MonitorId:</label>
+                        <div class="col-xs-6">
+                            <input type="text" class="form-control" id="MonitorId" placeholder="Введите MonitorId"  pattern="\d{4}" title="4 цифры" data-error="только 4 цифры">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    -->
+                    <div class="col-xs-9 col-xs-offset-3">
+                        @*<input type="submit" value="Create" class="btn btn-default" />*@
+                        <button type="submit" class="btn btn-primary" value="Create" id="add">Добавить</button>
+                        <button type="submit" class="btn btn-danger" id="addYet">Добавить еще</button>
+                        <button type="reset" class="btn btn-default" id='reset'>Очисить форму</button>
+                    </div>
+            }
+            </div>
+        </div>
+    </div>
+</main>
+
+<!---->
+
+
+
+
+@*<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AddGroups</title>
+</head>
+<body>
+    @using (Html.BeginForm()) 
+    {
+        @Html.AntiForgeryToken()
+        
+        <div class="form-horizontal">
+            <h4>Groups</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Number, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Number, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Number, "", new { @class = "text-danger" })
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.YearOfAdmission, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.YearOfAdmission, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.YearOfAdmission, "", new { @class = "text-danger" })
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.Faculty, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Faculty, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Faculty, "", new { @class = "text-danger" })
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.Degree, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Degree, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Degree, "", new { @class = "text-danger" })
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.FormOfStudy, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.FormOfStudy, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.FormOfStudy, "", new { @class = "text-danger" })
+                </div>
+            </div>
+    
+    
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+    
+    <div>
+        @Html.ActionLink("Back", "Groups")
+    </div>
+</body>
+</html>*@

@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Семестр</title>
+    
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script  type="text/javascript" src="js/jquery-3.2.0.js"></script>
+	<script  type="text/javascript" src="js/js.js"></script>
+    <link href="css/style.css" rel="stylesheet">
+<style type="text/css">
+    /* наша HTML таблица */
+table.sort{
+border-spacing:0.1em;
+margin-bottom:1em;
+margin-top:1em
+}
+
+/* ячейки таблицы */
+table.sort td{
+border:1px solid #CCCCCC;
+padding:0.3em 1em
+}
+
+/* заголовки таблицы */
+table.sort thead td{
+cursor:pointer;
+cursor:hand;
+font-weight:bold;
+text-align:center;
+vertical-align:middle
+}
+
+/* заголовок отсортированного столбца */
+table.sort thead td.curcol{
+background-color:#999999;
+color:#FFFFFF
+}
+</style>
+  </head>
+  <body>
+	
+    <div class="container">
+    	
+	    	<!---->
+	    	<header>
+		    	<div class="row">
+		    		
+		    			<div class="col-xs-12 ">
+			    			<div class=" col-xs-2">	
+				    				<div class="logoImg"> <img src="image/logo.png"></div>		    			
+			    			</div>
+			    			<div class="logoTxt col-xs-5">
+			    				<h1 >Электронный дневник</h1>
+			    			</div>
+
+							<div class=" col-xs-5 ">
+								<div class="">
+	                				<div class="account">
+	                        			<a href="#" >
+	                    				<div class="img-container1"> 
+	                    					<img src="image/face.jpg" alt="лицо отправителя сообщения">
+	                    		   		 </div>                          	
+	                          			</a>      
+	                          			                      
+	                    			</div>
+	                   			</div>
+		                		<div class="col-xs-2 logoTxt">
+		                			<h3 align="left">Фамилия<br> Имя</h3>
+		                			<div class="btn btn-primary">Выйти</div>
+		    	  				</div>                             
+	                    	</div>
+				    	</div>	 
+					
+				</div>	       		
+	    	</header>
+	    	<!---->
+	    	<nav class="navbar navbar-inverse"> 
+				<div class="container-fluid"> 
+					<div class="navbar-header"> 
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-9" aria-expanded="false">
+ 						<span class="sr-only">Toggle navigation</span>
+ 						<span class="icon-bar"></span>
+  						<span class="icon-bar"></span>  						 
+  						</button> <a href="#" class="navbar-brand">Дневник</a> 
+ 					</div> 
+	  				<div class="navbar-collapse collapse in" id="bs-example-navbar-collapse-9" aria-expanded="false">
+	  					 <ul class="nav navbar-nav">
+	    					<li ><a href="#">Моя страница</a></li>    					
+	    					<li><a href="admin_student.html">Студент</a></li>
+							<li><a href="admin_subject.html">Предмет</a></li>
+							<li><a href="admin_teacher.html">Преподаватель</a></li>
+							<li><a href="admin_group.html">Группа</a></li>
+     					 	<li class="active"><a href="#">Семестр</a></li>
+	     					<li><a href="admin_teacherGroupSubject.html">преподаватель-предмет-группа</a></li>
+	     					<li class="dropdown">
+							  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Связь таблиц<span class="caret"></span></a>
+							  <ul class="dropdown-menu">
+								<li><a href="#">Задачи</a></li>
+								<li><a href="#">Оценки</a></li>							
+							  </ul>
+							</li>
+	      				</ul> 
+	      			</div> 
+      			</div> 
+     		 </nav>
+	    	<!---->
+	    	<main>
+	    	<div class="row" style="margin-top: 20px;">
+	    		<div class="col-xs-5 col-xs-offset-3">
+	    			<a href="admin_add_semester.html" class="btn btn-primary btn-lg btn-block">Добавить семестр</a>
+	    		</div>
+			 </div>
+ 			  		<div class="row">
+ 			  		<div class="form-group">						
+					</div>
+ 			  			<div class="col-xs-12">
+
+ 			  			<table id="rez_tablh"  style="margin-left: 10px;">
+ 			  						<tr>
+										<th id="thBeginningDate" ><input type="text" placeholder="Год поступления" ></th>
+										<th id="thEndDate" ><input type="text" placeholder="Год окончания" style="margin-left: 10px;" ></th>
+										<th id="thNumber"><input type="text" placeholder="Номер семестра" style="margin-left: 10px;"></th>
+                                        <th id="thYear"><input type="text" placeholder="Год" style="margin-left: 10px;"></th>
+									</tr> 			  				
+ 			  			</table>
+ 			  				<table class="table table-hover table-bordered sort" cellspacing="0" id="rez_tab" > 			  				
+								<thead>									
+									<tr style="border: 1px solid #019CFF;">
+										<td>Год поступления</td>
+										<td>Год окончания</td>
+										<td>Номер семестра </td>
+										<td>Год</td>													  						
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td id="BeginningDate">131071</td>
+										<td id="EndDate">Юрьев Игорь</td>
+										<td id="Number">16,10,1995</td>
+										<td id="Year">1190</td>										
+										<td style="border-style: none;" ><a href="#"><span  class="glyphicon glyphicon-edit" title="Редактировать"></span></a>
+										<a href="#myModal" data-toggle="modal" role="dialog" data-backdrop="static"><span class="glyphicon glyphicon-remove" title="Удалить"></span></a></td>
+									</tr>
+									<tr>
+										<td id="BeginningDate">20171</td>
+										<td id="EndDate">Соколов алексей</td>
+										<td id="Number">16,10,1995</td>
+										<td id="Year">1490</td>										
+										<td style="border-style: none; width: 80px;" ><a href="#"><span  class="glyphicon glyphicon-edit" title="Редактировать"></span></a>
+										<a href="#myModal" data-toggle="modal" role="dialog" data-backdrop="static"><span class="glyphicon glyphicon-remove" title="Удалить"></span></a></td>
+									</tr>
+								</tbody>
+ 			  				</table>
+ 			  			</div>
+ 			  		</div>	
+ 			  		
+
+
+
+
+
+
+<div id="myModal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Заголовок модального окна -->
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Удалить?</h4>
+      </div>
+      <!-- Основное содержимое модального окна -->
+      <div class="modal-body">
+        Вы уверены что хотитет удалить? Вы уже потом не вернете данные.
+      </div>
+      <!-- Футер модального окна -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+        <button type="button" class="btn btn-danger">Удалить</button>
+      </div>
+    </div>
+  </div>
+</div>
+ 			  		
+ 			  		
+ 			  		
+   			</main>
+	    	<!---->
+	    	<footer>
+	    	<div class="row">
+	    	<div class="col-xs-12">
+				<div style="float: right"> <h5>Все права защищены © 2017</h5>по всем вопросам пишите по адресу vlad@htmlbook.ru </div>
+    			<div style="float: left">Создатели сайта: <ul><li>Юрьев Игорь</li><li>Соколов Алексей</li></ul>
+    		</div>
+				</div>
+				</div>
+	    	</footer>
+    	</div>
+	     
+	     
+
+	 <script src="http://code.jquery.com/jquery-latest.js"></script>
+     <script src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	
+<script type="text/javascript" src="js/jquery.magnifier.js"></script>
+
+        
+
+
+	  <script>
+		$("#rez_tablh input").on("keyup", function(){
+		    var filterB = $("#thBeginningDate input").val(),
+		        filterE = $("#thEndDate input").val(),
+                filterN = $("#thNumber input").val(),
+		        filterY = $("#thYear input").val();
+
+           
+		    $("#rez_tab tr").each(function () {
+		        var b = $(this).find('#BeginningDate').text(),
+		            e = $(this).find('#EndDate').text(),
+                    n = $(this).find('#Number').text(),
+		            y = $(this).find('#Year').text();
+		        if (b.search(new RegExp(filterB,"i")) < 0 ||
+		            e.search(new RegExp(filterE,"i")) < 0 ||
+                    n.search(new RegExp(filterN,"i")) < 0 ||
+		            y.search(new RegExp(filterY,"i"))) {
+		            $(this).hide();
+		        } else {
+		            $(this).show();
+		        }
+		    }); 
+            $("thead tr").show();
+		});
+		
+	</script>    
+
+<script type="text/javascript">
+
+
+
+var img_dir = "/i/"; // папка с картинками
+var sort_case_sensitive = false; // вид сортировки (регистрозависимый или нет)
+
+// ф-ция, определяющая алгоритм сортировки
+function _sort(a, b) {
+    var a = a[0];
+    var b = b[0];
+    var _a = (a + '').replace(/,/, '.');
+    var _b = (b + '').replace(/,/, '.');
+    if (parseFloat(_a) && parseFloat(_b)) return sort_numbers(parseFloat(_a), parseFloat(_b));
+    else if (!sort_case_sensitive) return sort_insensitive(a, b);
+    else return sort_sensitive(a, b);
+}
+
+// ф-ция сортировки чисел
+function sort_numbers(a, b) {
+    return a - b;
+}
+
+// ф-ция регистронезависимой сортировки
+function sort_insensitive(a, b) {
+    var anew = a.toLowerCase();
+    var bnew = b.toLowerCase();
+    if (anew < bnew) return -1;
+    if (anew > bnew) return 1;
+    return 0;
+}
+
+// ф-ция регистрозависимой сортировки
+function sort_sensitive(a, b) {
+    if (a < b) return -1;
+    if (a > b) return 1;
+    return 0;
+}
+
+// вспомогательная ф-ция, выдирающая из дочерних узлов весь текст
+function getConcatenedTextContent(node) {
+    var _result = "";
+    if (node == null) {
+        return _result;
+    }
+    var childrens = node.childNodes;
+    var i = 0;
+    while (i < childrens.length) {
+        var child = childrens.item(i);
+        switch (child.nodeType) {
+            case 1: // ELEMENT_NODE
+            case 5: // ENTITY_REFERENCE_NODE
+                _result += getConcatenedTextContent(child);
+                break;
+            case 3: // TEXT_NODE
+            case 2: // ATTRIBUTE_NODE
+            case 4: // CDATA_SECTION_NODE
+                _result += child.nodeValue;
+                break;
+            case 6: // ENTITY_NODE
+            case 7: // PROCESSING_INSTRUCTION_NODE
+            case 8: // COMMENT_NODE
+            case 9: // DOCUMENT_NODE
+            case 10: // DOCUMENT_TYPE_NODE
+            case 11: // DOCUMENT_FRAGMENT_NODE
+            case 12: // NOTATION_NODE
+            // skip
+            break;
+        }
+        i++;
+    }
+    return _result;
+}
+
+// суть скрипта
+function sort(e) {
+    var el = window.event ? window.event.srcElement : e.currentTarget;
+    while (el.tagName.toLowerCase() != "td") el = el.parentNode;
+    var a = new Array();
+    var name = el.lastChild.nodeValue;
+    var dad = el.parentNode;
+    var table = dad.parentNode.parentNode;
+    var up = table.up;
+    var node, arrow, curcol;
+    for (var i = 0; (node = dad.getElementsByTagName("td").item(i)); i++) {
+        if (node.lastChild.nodeValue == name){
+            curcol = i;
+            if (node.className == "curcol"){
+                arrow = node.firstChild;
+                table.up = Number(!up);
+            }else{
+                node.className = "curcol";
+                arrow = node.insertBefore(document.createElement("img"),node.firstChild);
+                table.up = 0;
+            }
+            arrow.src = img_dir + table.up + ".gif";
+            arrow.alt = "";
+        }else{
+            if (node.className == "curcol"){
+                node.className = "";
+                if (node.firstChild) node.removeChild(node.firstChild);
+            }
+        }
+    }
+    var tbody = table.getElementsByTagName("tbody").item(0);
+    for (var i = 0; (node = tbody.getElementsByTagName("tr").item(i)); i++) {
+        a[i] = new Array();
+        a[i][0] = getConcatenedTextContent(node.getElementsByTagName("td").item(curcol));
+        a[i][1] = getConcatenedTextContent(node.getElementsByTagName("td").item(1));
+        a[i][2] = getConcatenedTextContent(node.getElementsByTagName("td").item(0));
+        a[i][3] = node;
+    }
+    a.sort(_sort);
+    if (table.up) a.reverse();
+    for (var i = 0; i < a.length; i++) {
+        tbody.appendChild(a[i][3]);
+    }
+}
+
+// ф-ция инициализации всего процесса
+function init(e) {
+    if (!document.getElementsByTagName) return;
+
+    for (var j = 0; (thead = document.getElementsByTagName("thead").item(j)); j++) {
+        var node;
+        for (var i = 0; (node = thead.getElementsByTagName("td").item(i)); i++) {
+            if (node.addEventListener) node.addEventListener("click", sort, false);
+            else if (node.attachEvent) node.attachEvent("onclick", sort);
+            node.title = "Нажмите на заголовок, чтобы отсортировать колонку";
+        }
+        thead.parentNode.up = 0;
+        
+        if (typeof(initial_sort_id) != "undefined"){
+            td_for_event = thead.getElementsByTagName("td").item(initial_sort_id);
+            if (document.createEvent){
+                var evt = document.createEvent("MouseEvents");
+                evt.initMouseEvent("click", false, false, window, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, td_for_event);
+                td_for_event.dispatchEvent(evt);
+            } else if (td_for_event.fireEvent) td_for_event.fireEvent("onclick");
+            if (typeof(initial_sort_up) != "undefined" && initial_sort_up){
+                if (td_for_event.dispatchEvent) td_for_event.dispatchEvent(evt);
+                else if (td_for_event.fireEvent) td_for_event.fireEvent("onclick");
+            }
+        }
+    }
+}
+
+// запускаем ф-цию init() при возникновении события load
+var root = window.addEventListener || window.attachEvent ? window : document.addEventListener ? document : null;
+if (root){
+    if (root.addEventListener) root.addEventListener("load", init, false);
+    else if (root.attachEvent) root.attachEvent("onload", init);
+}
+//-->
+</script>
+
+  </body>
+</html>

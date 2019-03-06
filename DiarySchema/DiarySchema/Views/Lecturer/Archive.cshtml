@@ -1,0 +1,347 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@using DiarySchema.Models
+@model LecturerViewModel
+
+        <!---->
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-9" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button> <a href="#" class="navbar-brand">Дневник</a>
+                </div>
+                <div class="navbar-collapse collapse in" id="bs-example-navbar-collapse-9" aria-expanded="false">
+                    <ul class="nav navbar-nav">
+                        <li><a href="lecturer_my_page.html">Моя страница</a></li>
+                        <li><a href="/Lecturer/Index">Журнал</a></li>
+                        <li class="active"><a href="#">Архив</a></li>
+                        <li><a href="/Lecturer/SelectGroupAndSubject">Преподаватель-группа-предмет</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!---->
+        <main>
+            <!-- <div class="container"> -->
+            <!--выбора года меметра группы предмета-->
+            <div class="row">
+                <div class="col-xs-4 col-xs-offset-1">
+                    <h3 align="center">Год обучения</h3>
+                    <select id="semesters" name="semesters" class="form-control" style="font-size: 16pt; text-align: center;">
+                        @foreach (var item in ViewBag.Semesters)
+                        {
+                            <option value="@item.Id">@item.Year @item.Number семестр</option>
+                        }
+                    </select>                    
+                </div>                
+                <div class="col-xs-2 " id="getGroup">
+                    <h3 align="center">Группа</h3>
+                    <select id="Number" name="Number" class="form-control" style="font-size: 16pt; text-align: center;">
+                        @foreach (var p in ViewBag.Groups as SelectList)
+                        {
+                            <option value="@p.Value">@p.Text</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-xs-4" id="getSubjects">
+                    <h3 align="center">Дисциплина</h3>
+                    <select id="Name" name="Name" class="form-control" style="font-size: 16pt; text-align: center;">
+                        @foreach (var p in ViewBag.Subjects as SelectList)
+                        {
+                            <option value="@p.Value">@p.Text</option>
+                        }
+                    </select>
+    @*<select class="form-control" id="sel4" style="font-size: 16pt; text-align: center;">
+            <option>Проектирование интерфейса</option>
+            <option>1590</option>
+        </select>*@
+</div>
+            </div>
+            <div class="row">
+                <div class="col-xs-10 col-xs-offset-1">
+                    <button type="button" class="btn btn-primary btn-lg btn-block">Обработать</button>
+                </div>
+            </div>
+            <!--конец выбора года меметра группы предмета-->
+
+            <div id="journal1">
+                <h1 align="center"><b style="border-bottom-style: solid;">@Model.Subject.Name</b></h1>
+                <br>
+                @if (Model.ListOfGrades.Count == 0)
+            {
+                    <div class="col-xs-4 col-xs-offset-4">
+                        @Html.ActionLink("Cоздать журнал", "CreateJournal/", new { groupId = Model.Group.Id, subjectId = Model.Subject.Id }, new { @class = "btn btn-warning", style = "margin-bottom: 10px;" }) <br>
+                    </div>
+                }
+                @if ((Model.ExamGrades.Count == 0) && (Model.PassFailTestGrades.Count == 0) && (Model.CoursePaperGrades.Count == 0) && (Model.PracticalWorkGrades.Count == 0))
+            {
+                    <div class="col-xs-4 col-xs-offset-4">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Small modal</button>
+                        <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+                            <div class="modal-dialog modal-sm" role="document">
+                                <div class="modal-content">
+                                    <div id="createExam"></div>
+
+                                </div>
+                            </div>
+                        </div>
+                        @Html.ActionLink("Cоздать таблицу с оценками за экзамен", "CreateExamTable", new { groupId = Model.Group.Id, subjectId = Model.Subject.Id }, new { @class = "btn btn-warning", id = "exam10", style = "margin-bottom: 10px;", data_toggle = "modal", data_target = ".bs-example-modal-sm" }) <br>
+                        @Html.ActionLink("Cоздать таблицу с зачётами", "CreatePassFailTestTable", new { groupId = Model.Group.Id, subjectId = Model.Subject.Id }, new { @class = "btn btn-warning", style = "margin-bottom: 10px;" }) <br>
+                        @Html.ActionLink("Cоздать таблицу с оценками за курсовую работу", "CreateCoursePaperTable", new { groupId = Model.Group.Id, subjectId = Model.Subject.Id }, new { @class = "btn btn-warning", style = "margin-bottom: 10px;" }) <br>
+                        @Html.ActionLink("Cоздать таблицу с оценками за практику", "CreatePracticalWorkTable", new { groupId = Model.Group.Id, subjectId = Model.Subject.Id }, new { @class = "btn btn-warning", style = "margin-bottom: 10px;" }) <br>
+                    </div>
+                }
+
+                <form action="/Lecturer/Index/" method="post">
+                    @Html.HiddenFor(m => m.Group.Id)
+                    @Html.HiddenFor(m => m.Subject.Id)
+
+                    @if (Model.ListOfGrades.Count > 0)
+                    {
+                        <div class="row">
+                            <div class="col-xs-2" style="padding-right: 0px; padding-bottom: 0px; padding-left: 25px;">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered   table-condensed">
+                                        <tr>
+                                            <th width="20px" height="102px" style="vertical-align: middle; background-color: #B0DCF6;">№</th>
+                                            <th style="vertical-align: middle; text-align: center; background-color: #B0DCF6;">Группа</th>
+                                        </tr>
+                                        @for (int i = 0; i < Model.NamesOfStudents.Count; i++)
+                                        {
+                                            int y = i + 1;
+                                            <tr>
+                                                <td style="padding-top:3px; padding-bottom: 3px; background-color: #B0DCF6;"><p>@y</p></td>
+                                                <td style="padding-top:3px; padding-bottom: 3px; background-color: #B0DCF6;"><p class="clip" title="@Model.NamesOfStudents[i]">@Model.NamesOfStudents[i]</p></td>
+                                            </tr>
+                                        }
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-10" style="padding-left: 0px; padding-bottom: 0px; padding-right: 25px;">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered   table-condensed">
+                                        <tr class="th">
+                                            @for (int i = 0; i < Model.MonthNames.Count; i++)
+                                            {
+                                                <th colspan=@Model.DaysMonth[i] style="height: 30px; text-align: center; background-color: #E9E4E4;"><p class="month">@Model.MonthNames[i]</p></th>
+                                            }
+                                        </tr>
+                                        <tr class="th">
+                                            @foreach (var b in Model.DaysSemester)
+                                            {
+                                                <th style="width: 30px; height: 43px; background-color: #E9E4E4;"><p>@b</p></th>
+                                            }
+                                        </tr>
+                                        @for (int i = 0; i < Model.ListOfGrades.Count; i++)
+                                        {
+                                            <tr>
+                                                @for (int j = 0; j < Model.ListOfGrades[i].Count; j++)
+                                                {
+
+                                                    @Html.HiddenFor(m => m.ListOfGrades[i][j].Id)
+                                                    @Html.HiddenFor(m => m.ListOfGrades[i][j].Date)
+                                                    @Html.HiddenFor(m => m.ListOfGrades[i][j].TableOfGradeId)
+                                                    @Html.HiddenFor(m => m.ListOfGrades[i][j].StudentId)
+                                                    <th style="padding: 0px; height:37px; width: 30px;">@Html.EditorFor(m => m.ListOfGrades[i][j].Value, new { htmlAttributes = new { style = "width: 29px; height:36px;" } })</th>
+                                                }
+                                            </tr>
+                                        }
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3 col-xs-offset-8">
+                                <button name="action" value="Journal" class="btn btn-danger btn-block"><b>Сохранить</b></button>
+                            </div>
+                        </div>
+                    }
+
+
+                    <div class="row">
+                        <div class="col-xs-5 " style="padding-left: 25px;">
+                            @if (Model.ExamGrades.Count > 0)
+                            {
+                                <h2 align="center"><b>Экзамен</b></h2>
+                                <table class="table table-bordered table-hover" style="background-color:#f57173;">
+                                    <tr>
+                                        <th style="background-color: #4BB7F5">№</th>
+                                        <th style="background-color: #4BB7F5">Студенты</th>
+                                        <th style="background-color: #4BB7F5">Оценки</th>
+                                    </tr>
+                                    @for (int i = 0; i < Model.ExamGrades.Count; i++)
+                                    {
+                                        int y = i + 1;
+                                        <tr>
+                                            <td style="padding-top:3px; padding-bottom: 3px; background-color: #B0DCF6; width:20px;"><p>@y</p></td>
+                                            <td style="padding-top:3px; padding-bottom: 3px; background-color: #B0DCF6; width:300px;"><p>@Model.NamesOfStudents[i]</p></td>
+
+                                            @Html.HiddenFor(m => m.ExamGrades[i].Id)
+                                            @Html.HiddenFor(m => m.ExamGrades[i].Date)
+                                            @Html.HiddenFor(m => m.ExamGrades[i].TableOfGradeId)
+                                            @Html.HiddenFor(m => m.ExamGrades[i].StudentId)
+                                            <td> @Html.EditorFor(m => m.ExamGrades[i].Value, new { htmlAttributes = new { pattern = "[2-5]{1}", title = "Ввели не допустимое значение", style = "width: 100px;" } })</td>
+                                        </tr>
+                                    }
+                                </table>
+                                <button name="action" class="btn btn-primary btn-block" value="Exam">Сохранить</button>
+                            }
+                        </div>
+
+                        <div class="col-xs-5 col-xs-offset-1">
+                            @if (Model.PassFailTestGrades.Count > 0)
+                            {
+                                <h2 align="center"><b><ins>Зачёт</ins></b></h2>
+                                <table class="table table-bordered table-hover" style="background-color:#f57173;">
+                                    <tr>
+                                        <th style="background-color: #4BB7F5">№</th>
+                                        <th style="background-color: #4BB7F5">Студенты</th>
+                                        <th style="background-color: #4BB7F5">Оценки</th>
+                                    </tr>
+                                    @for (int i = 0; i < Model.PassFailTestGrades.Count; i++)
+                                    {
+                                        int y = i + 1;
+                                        <tr>
+                                            <td style="padding-top:3px; padding-bottom: 3px; background-color: #B0DCF6; width:20px;"><p>@y</p></td>
+                                            <td style="padding-top:3px; padding-bottom: 3px; background-color: #B0DCF6; width:300px;"><p>@Model.NamesOfStudents[i]</p></td>
+                                            @Html.HiddenFor(m => m.PassFailTestGrades[i].Id)
+                                            @Html.HiddenFor(m => m.PassFailTestGrades[i].Date)
+                                            @Html.HiddenFor(m => m.PassFailTestGrades[i].TableOfGradeId)
+                                            @Html.HiddenFor(m => m.PassFailTestGrades[i].StudentId)
+                                            @*<td>@Html.EditorFor(m => m.PassFailTestGrades[i].Value, new { htmlAttributes = new { style = "width: 100px;" } })</td>*@
+                                            <td>@Html.DropDownList("PassFailTestGrades[" + @i + "].Value", new SelectList(new string[] { Model.PassFailTestGrades[i].Value, "Зачёт", "Незачёт", "0", "1", "2", "3", "4", "5" }, new SelectList(new string[] { "", "Зачёт", "Незачёт", "0", "1", "2", "3", "4", "5" })))</td>    @*( "Зачёт", "Незачёт", "0", "1", "2", "3", "4", "5" )*@
+                                        </tr>
+                                    }
+                                </table>
+                                <button name="action" class="btn btn-primary btn-block" value="PassFailTest">Сохранить</button>
+                            }
+                        </div>
+                    </div>
+                    <div class="row" style="padding-bottom:20px">
+                        <div class="col-xs-5" style="padding-left: 25px;">
+                            @if (Model.CoursePaperGrades.Count > 0)
+                            {
+                                <h2 align="center"><b><ins>Курсовая работа</ins></b></h2>
+                                <table class="table table-bordered table-hover" style="background-color:#f57173;">
+                                    <tr>
+                                        <th style="background-color: #4BB7F5">№</th>
+                                        <th style="background-color: #4BB7F5">Студенты</th>
+                                        <th style="background-color: #4BB7F5">Оценки</th>
+                                    </tr>
+                                    @for (int i = 0; i < Model.CoursePaperGrades.Count; i++)
+                                    {
+                                        int y = i + 1;
+                                        <tr>
+                                            <td style="padding-top:3px; padding-bottom: 3px; background-color: #B0DCF6; width:20px;"><p>@y</p></td>
+                                            <td style="padding-top:3px; padding-bottom: 3px; background-color: #B0DCF6; width:300px;"><p>@Model.NamesOfStudents[i]</p></td>
+                                            @Html.HiddenFor(m => m.CoursePaperGrades[i].Id)
+                                            @Html.HiddenFor(m => m.CoursePaperGrades[i].Date)
+                                            @Html.HiddenFor(m => m.CoursePaperGrades[i].TableOfGradeId)
+                                            @Html.HiddenFor(m => m.CoursePaperGrades[i].StudentId)
+                                            <td>@Html.EditorFor(m => m.CoursePaperGrades[i].Value, new { htmlAttributes = new { pattern = "[2-5]{1}", title = "Ввели не допустимое значение", style = "width: 100px;" } })</td>
+                                        </tr>
+                                    }
+                                </table>
+                                <button name="action" class="btn btn-primary btn-block" value="CoursePaper">Сохранить</button>
+                            }
+                        </div>
+                        <div class="col-xs-5 col-xs-offset-1">
+                            @if (Model.PracticalWorkGrades.Count > 0)
+                            {
+                                <h2 align="center"><b><ins>Практика</ins></b></h2>
+                                <table class="table table-bordered table-hover" style="background-color:#f57173;">
+                                    <tr>
+                                        <th style="background-color: #4BB7F5">№</th>
+                                        <th style="background-color: #4BB7F5">Студенты</th>
+                                        <th style="background-color: #4BB7F5">Оценки</th>
+                                    </tr>
+                                    @for (int i = 0; i < Model.PracticalWorkGrades.Count; i++)
+                                    {
+                                        int y = i + 1;
+                                        <tr>
+                                            <td style="padding-top:3px; padding-bottom: 3px; background-color: #B0DCF6;  width:20px;"><p>@y</p></td>
+                                            <td style="padding-top:3px; padding-bottom: 3px; background-color: #B0DCF6;  width:300px;"><p>@Model.NamesOfStudents[i]</p></td>
+                                            @Html.HiddenFor(m => m.PracticalWorkGrades[i].Id)
+                                            @Html.HiddenFor(m => m.PracticalWorkGrades[i].Date)
+                                            @Html.HiddenFor(m => m.PracticalWorkGrades[i].TableOfGradeId)
+                                            @Html.HiddenFor(m => m.PracticalWorkGrades[i].StudentId)
+                                            <td>@Html.EditorFor(m => m.PracticalWorkGrades[i].Value, new { htmlAttributes = new { pattern = "[2-5]{1}", title = "Ввели не допустимое значение", style = "width: 100px;" } })</td>
+                                        </tr>
+                                    }
+                                </table>
+                                <button name="action" class="btn btn-primary btn-block" value="PracticalWork">Сохранить</button>
+
+                            }
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </main>
+      
+
+<script type="text/javascript">
+    $(document).on('change', '#Number', function () {
+        //alert('sdfsdf');
+        var semesterId = $("#semesters option:selected").val();
+        var groupId = $("#Number option:selected").val();
+
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Action("GetSubjeсt")?groupId=' + semesterId+'&semesterId='+groupId,                
+            success: function (data) {
+                // заменяем содержимое присланным частичным представлением
+                $('#getSubjects').replaceWith(data);
+            }
+        });
+    });
+
+    $(document).on('change', '#Name', function () {
+        //alert('sdfsdf');
+        var semesterId = $("#semesters option:selected").val();
+        var groupId = $("#Number option:selected").val();
+        var subjectId = $("#Name option:selected").val();
+        $.ajax({
+            type: 'GET',
+                url: '@Url.Action("GetJournal")?groupId=' + groupId + '&subjectId=' + subjectId + '&semesterId=' + semesterId,
+            success: function (data) {
+                // заменяем содержимое присланным частичным представлением
+                $('#journal1').replaceWith(data);
+            }
+        });
+    });
+
+
+    $('#semesters').change(function () {
+        // получаем выбранный id
+        var id = $("#semesters option:selected").val();//$(this).val();
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Action("GetGroups")/' + id,
+            success: function (data) {
+                // заменяем содержимое присланным частичным представлением
+                $('#getGroup').replaceWith(data);
+            }
+        });
+    });
+
+</script>
+
+<style>
+    p.clip {
+        white-space: nowrap; /* Запрещаем перенос строк */
+        overflow: hidden; /* Обрезаем все, что не помещается в область */
+        width: 130px;
+        text-overflow: ellipsis; /* Добавляем многоточие */
+    }
+
+    p.month {
+        white-space: nowrap; /* Запрещаем перенос строк */
+    }
+</style>
+
+       

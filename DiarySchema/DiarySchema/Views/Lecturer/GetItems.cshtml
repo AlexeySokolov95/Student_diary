@@ -1,0 +1,47 @@
+﻿
+    @{ 
+        Layout = null;
+    }
+@*@Html.DropDownList("Subject", ViewBag.Subject as SelectList, new { id = "city" })*@
+
+<div id="home" class="tab-pane fade in active home123" name="Subject">
+    <ul class="nav nav-pills  nav-justified">
+        <li><h1>Дисциплина:</h1></li>
+        @foreach (var p in ViewBag.Subject as SelectList)
+        {
+            <li class="subjectSS" value="@p.Value"><a data-toggle="tab" href="#dd">@p.Text</a></li>
+        }
+    </ul>
+</div>
+
+
+        
+
+
+@*<div id="home" class="tab-pane fade in active home123" name="Subject">
+    <ul class="nav nav-pills  nav-justified">
+        <li><h1>Дисциплина:</h1></li>
+        @foreach (var p in ViewBag.Subject as SelectList)
+        {
+            <li class="subjectSS" value="@p.Value"><a data-toggle="tab" href="#dd">@p.Text</a></li>
+        }
+    </ul>
+</div>*@
+
+
+
+
+
+@*<select class="from-control" id="city" name="Subject">
+    @foreach(var p in ViewBag.Subject as SelectList)
+    {
+        <option value="@p.Value">@p.Text</option>
+    }
+</select>*@
+
+@*<select id="city" name="City">
+        @foreach (var item in ViewBag.Subject)
+        {
+            <option>@item</option>
+        }
+    </select>*@

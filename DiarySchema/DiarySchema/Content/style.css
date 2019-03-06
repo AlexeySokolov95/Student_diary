@@ -1,0 +1,200 @@
+body{
+	min-width:800px;
+    background-color: #CCC ;
+}
+header{
+    border-style: solid;
+    background:  linear-gradient(0deg,#E8FAE6,#BAEFB3);
+}
+main{ 
+    border-style: solid;
+	background:  linear-gradient(0deg,#BAEFB3,#E8FAE6);
+/*	background-image: url(../image/diary.png);
+	background-attachment: scroll;
+	background-position: center center;
+	background-size: cover;*/
+}
+footer{
+	border-style: solid;
+    background:  linear-gradient(0deg,#E8FAE6,#BAEFB3);
+}
+.navbar{
+    margin-bottom: 0px;
+}
+.logoImg{
+width:107px;
+float:left;
+margin-left:30px;
+}
+.logoTxt{
+
+margin-top:40px;
+}
+.accountImg{
+        width: 150px;
+    height: 150px;   
+    margin:10px;
+}
+.accountTxt{
+        
+    
+    float: right;
+    margin:10px;
+}
+.img-container1{
+    width: 150px;
+    height: 150px;    
+    overflow: hidden;
+}
+.account{
+
+    float: left;
+    margin:10px;
+
+}
+.float-right{
+    float: right;
+}
+.img-container {
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+}
+.account_inf{
+
+    float: left;
+    margin:20px;
+
+}
+caption{
+    text-align: center;
+    font-size: 30px;
+    font-weight: 900;
+    color:#232323;
+}
+
+/* Lecturer */
+    /*mark*/
+table#journalStudent td{
+    padding-top:3px; 
+    padding-bottom: 3px; 
+    background-color: #B0DCF6;
+    border-color: #2D277E
+}
+table#journalStudent th{
+    vertical-align: middle; 
+    text-align: center; 
+    background-color: #B0DCF6;
+}
+table#journalMark td{
+    padding: 0px;
+}
+table#journalMark input{
+    width: 100%;
+}
+table#journalMark th{
+    background-color: #E9E4E4;
+}
+    /*create_table*/
+.glyphicon-remove:hover{
+    color:darkred;
+}
+.glyphicon-remove{
+    color: red;
+}
+span{
+    font-size: 30px;
+}
+    /*archive*/
+form select{
+    font-size: 16pt;
+    text-align: center;
+}
+/*admin*/
+#addAdmin label{
+    text-align:right;
+}
+.col-xs-6 > p{    
+    font-weight:bold;
+}
+p.control-label.col-xs-6{
+    text-align:right;
+}
+
+
+
+
+
+/*для сортировки таблицы*/
+        /* наша HTML таблица */
+        table.sort {
+            border-spacing: 0.1em;
+            margin-bottom: 1em;
+            margin-top: 1em;
+        }
+
+            /* ячейки таблицы */
+            table.sort td {
+                border: 1px solid #CCCCCC;
+                padding: 0.3em 1em;
+            }
+
+            /* заголовки таблицы */
+            table.sort thead td {
+                cursor: pointer;
+                cursor: hand;
+                font-weight: bold;
+                text-align: center;
+                vertical-align: middle;
+            }
+
+                /* заголовок отсортированного столбца */
+                table.sort thead td.curcol {
+                    background-color: #999999;
+                    color: #FFFFFF;
+                }
+/*конец для сортировки таблицы*/
+
+
+/*.contant{
+    border-style: solid;
+}
+
+.indent{ margin-left:0px;
+margin-right:0px;
+padding-right:0px;
+padding-left:0px
+}
+.height{ height:20px;}
+
+.messages{
+	margin-top:20px;
+	border-style: outset;
+	border-radius:5px;
+	background-color:#EEE0BA;
+} 
+
+.messages-text{border-style:groove;
+min-height:10px;}
+
+
+.img-container {
+    width: 100%;
+    height: 120px;
+    background: red;
+    overflow: hidden;
+}
+
+.imgMessages {
+    width: 120px;
+    height: 120px;
+    float: left;
+	 margin:10px;
+}
+
+.imgHead{
+	width: 150px;
+    height: 150px;
+    float: left;
+	margin:10px;
+}*/

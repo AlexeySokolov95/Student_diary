@@ -1,0 +1,19 @@
+﻿@using DiarySchema.Models
+@model IEnumerable<ApplicationsForRegistration>
+
+
+@foreach (var b in Model)
+{
+    <tr>
+        <td><p>@b.FirstName<p></td>
+        <td><p>@b.SecondName<p></td>
+        <td><p>@b.MiddleName<p></td>
+        <td><p>@b.Groups.GetGroupNumber(Semester.Today())</p></td>
+        <td><p>@b.CardNumber<p></td>
+        <td><p>@b.Email<p></td>
+        <td><p>@b.DateOfBirth.Date<p></td>
+        <td><p>@b.Login<p></td>
+        <td><p>@b.Password<p></td>
+        
+    </tr>
+}

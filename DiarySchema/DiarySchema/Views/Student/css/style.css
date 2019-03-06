@@ -1,0 +1,24 @@
+body{
+	min-width:800px;
+}
+.logotip{
+width:107px;
+float:left;
+margin-left:30px;
+}
+.indent{ margin-left:0px;
+margin-right:0px;
+padding-right:0px;
+padding-left:0px
+}
+.height{ height:20px;}
+
+.messages{
+	margin-top:20px;
+	border-style: outset;
+	border-radius:5px;
+	background-color:#EEE0BA;
+} 
+.messages img{ width:120px; height:120px;}
+.messages-text{border-style:groove;
+min-height:10px;}

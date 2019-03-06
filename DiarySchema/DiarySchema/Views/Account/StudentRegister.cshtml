@@ -1,0 +1,140 @@
+﻿@model DiarySchema.ViewModel.StudentRegisterViewModel
+@{
+    Layout = "~/Views/Shared/_LayoutAdminAdd.cshtml";
+}
+
+<main>
+    <div class="row" style="padding-top: 30px;padding-bottom: 30px;">
+        <div class="container">
+
+            <h1 align="center">Регистрация студента</h1>
+            <div class="container col-xs-6 col-xs-offset-3" style="border:solid; background-color:#93FE83; padding:10px; border-radius: 20px;">
+
+                @using (Html.BeginForm("StudentRegister", "Account", FormMethod.Post, new { @class = "form-horizontal" }))
+                {
+                @*<form class="form-horizontal" name="ValidationForm">*@
+                    <div class="form-group">
+                        <label class="control-label col-xs-6" for="SecondName">Фамилия:</label>
+                        <div class="col-xs-6">
+                            <input type="text" class="form-control" id="SecondName" name="SecondName" placeholder="Введите фамилию" required pattern="^[А-Яа-яЁё\s]+$" title="Ввод только рускими буквами">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-6" for="FirstName">Имя:</label>
+                        <div class="col-xs-6">
+                            <input type="text" class="form-control" id="FirstName" name="FirstName" placeholder="Введите имя" required pattern="^[А-Яа-яЁё\s]+$" title="Ввод только рускими буквами">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-6" for="MiddleName">Отчество:</label>
+                        <div class="col-xs-6">
+                            <input type="text" class="form-control" id="MiddleName" name="MiddleName"  placeholder="Введите отчество" required pattern="^[А-Яа-яЁё]+$" title="Ввод только рускими буквами">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-6" for="DateOfBirth">Дата рождения:</label>
+                        <div class="col-xs-6">
+                            <input type="date" class="form-control" id="DateOfBirth" name="DateOfBirth" placeholder="Введите дату рождения" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-6" for="CardNumber">Номер студенческого билета:</label>
+                        <div class="col-xs-6">
+                            <input type="text" class="form-control" id="CardNumber" name="CardNumber" placeholder="Введите номер студенческого билета" required pattern="\d{6}" title="6 цифр">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-6" for="GroupId">Номер учебной группы:</label>
+                        <div class="col-xs-6">
+                            @*@Html.DropDownListFor(m => Model.GroupId, ViewBag.Groups as SelectList)*@
+                            <select class="form-control" id="GroupId" name="GroupId">
+                                @foreach (var p in ViewBag.Groups as SelectList)
+                                {
+                                    <option value="@p.Value">@p.Text</option>
+                                }
+                                
+                            </select>
+                            @*<input type="text" class="form-control" id="GroupId" name="GroupId" placeholder="Введите номер учебной группы" required pattern="\d{4}" title="4 цифр">*@
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-6" for="Email">Адрес электронной почты:</label>
+                        <div class="col-xs-6">
+                            <input type="email" class="form-control" id="Email" name="Email" placeholder="Введите адрес электронной почты" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-6" for="Login">Логин:</label>
+                        <div class="col-xs-6">
+                            <input type="text" class="form-control" id="Login" name="Login" placeholder="Введите логин" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-6" for="Password">Пароль:</label>
+                        <div class="col-xs-6">
+                            <input type="password" name="Password" class="form-control" id="Password" placeholder="Введите пароль" required pattern="\S{6,}" title="не менее 6 символов">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-6" for="PasswordConfirm">Подтверждение пароля:</label>
+                        <div class="col-xs-6">
+                            <input type="password" name="PasswordConfirm" class="form-control" id="PasswordConfirm" placeholder="Введите подтверждение пароля" required>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-xs-offset-6">
+                        <input type="submit" class="btn btn-primary" value="Регистрация" style="margin-bottom:10px;">
+                        <input type="reset" class="btn btn-default" value="Очистить форму">
+                    </div>
+                @*</form>*@
+               }
+            </div>
+        </div>
+    </div>
+</main>
+<script type ="text/javascript">
+    window.onload = function () {
+        document.getElementById("Password").onchange = validatePassword;
+        document.getElementById("PasswordConfirm").onchange = validatePassword;
+    }
+    function validatePassword(){
+        var pass2 = document.getElementById("PasswordConfirm").value;
+    var pass1 = document.getElementById("Password").value;
+    if(pass1!=pass2)
+        document.getElementById("PasswordConfirm").setCustomValidity("Пароли не совпадают");
+    else
+        document.getElementById("PasswordConfirm").setCustomValidity('');    
+    }
+    </script>
+@*<!DOCTYPE html>*@
+
+@*<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>StudentRegister</title>
+</head>
+<body>
+@using (Html.BeginForm())
+{<p>Имя</p>
+    @Html.EditorFor(model => model.FirstName)
+    <p>Фамилия</p>
+    @Html.EditorFor(model => model.SecondName)
+    <p>Отчество</p>
+    @Html.EditorFor(model => model.MiddleName)
+    <p>Номер студенческого</p>
+        @Html.EditorFor(model => model.CardNumber)
+    <p>Дата рождения</p>
+        @Html.EditorFor(model => model.DateOfBirth)
+    <p>Группа</p>
+        @Html.DropDownListFor(m => Model.GroupId, ViewBag.Groups as SelectList)
+    <p>Email</p>
+        @Html.EditorFor(model => model.Email)
+    <p>Login</p>
+        @Html.EditorFor(model => model.Login)
+    <p>Пороль</p>
+        @Html.EditorFor(model => model.Password)
+    <p>Потверждения пороля</p>
+        @Html.EditorFor(model => model.PasswordConfirm)
+        <input type="submit" value="Create" class="btn btn-default" /> }
+
+    </body>
+</html>*@

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Отметки</title>
+    
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script  type="text/javascript" src="js/jquery-3.2.0.js"></script>
+	<script  type="text/javascript" src="js/js.js"></script>
+    <link href="css/style.css" rel="stylesheet">
+
+  </head>
+  <body>
+	
+	    	  			<table id="rez_tablh" >
+ 			  						<tr>
+										<th id="thnumber"><input type="text" placeholder="Номер зачетки"></th>
+										<th id="thFIO"><input type="text" placeholder="Ф. И. О." ></th>										
+										<th id="thnumberGroup"><input type="text" placeholder="Номер группы"></th>									
+									</tr> 			  				
+ 			  			</table>
+ 			  				<table class="table table-hover table-bordered " cellspacing="0" id="rez_tab"> 			  				
+								<thead>									
+									<tr>
+										<th>№</th>
+										<th>ФИО</th>
+										<th>Дата рождения</th>
+										<th>№ группа</th>
+										<th>Фотография</th>
+										<th>UserName</th>
+										<th>Email</th> 			  						
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td id="number">131071</td>
+										<td id="FIO">Юрьев Игорь</td>
+										<td>16,10,1995</td>
+										<td id="numberGroup">1190</td>
+										<td><img class="magnify" alt="" style="width: auto; height: 30px;" src="image/account.ico"></td>
+										<td>UserName</td>
+										<td>oktyabr007@mail.ru</td>
+										<td style="border: none;" ><a href="#"><span  class="glyphicon glyphicon-edit" title="Редактировать"></span></a>
+										<a href="#myModal" data-toggle="modal" role="dialog" data-backdrop="static"><span class="glyphicon glyphicon-remove" title="Удалить"></span></a></td>
+									</tr>
+								</tbody>
+ 			  				</table>
+ 			  		
+
+
+
+<!-- <table id="rez_tablh">
+    <tr>
+        <th id="thnaim"><input type="text" placeholder="number"></th>
+        <th id="thinv"><input type="text" placeholder="FIO"></th>
+        <th id="thnumberGroup"><input type="text" placeholder="Номер № ..."></th>
+    </tr>
+</table>
+<table id="rez_tab">
+    <tr>
+        <td id="naim">Яблоко</td>
+        <td id="inv">1234</td>
+        <td id="numberGroup">1</td>
+    </tr>
+    <tr>
+        <td id="naim">Яблоко</td>
+        <td id="inv">23</td>
+        <td id="numberGroup">2</td>
+    </tr>
+    <tr>
+        <td id="naim">Яблоко</td>
+        <td id="inv">2</td>
+        <td id="numberGroup">3</td>
+    </tr>
+    <tr>
+        <td id="naim">Яблоко</td>
+        <td id="inv">784</td>
+        <td id="numberGroup">4</td>
+    </tr>
+    <tr>
+        <td id="naim">Груша</td>
+        <td id="inv">23</td>
+        <td id="numberGroup">5</td>
+    </tr>
+</table> -->
+ 		
+	   
+	     
+	     
+
+	 
+	  <script>
+	  $("#rez_tablh input").on("keyup", function(){
+		    var filterN = $("#thnumber input").val(),
+		        filterI = $("#thFIO input").val(),
+		        filterG = $("#thnumberGroup input").val();
+
+
+		    $("#rez_tab tr").each(function () {
+		        var n = $(this).find('#number').text(),
+		            i = $(this).find('#FIO').text(),
+		            f = $(this).find('#numberGroup').text();
+		        if (n.search(new RegExp(filterN,"i")) < 0 ||
+		            i.search(new RegExp(filterI,"i")) < 0 ||
+		            f.search(new RegExp(filterG,"i"))) {
+		            $(this).hide();
+		        } else {
+		            $(this).show();
+		        }
+		    });
+		});
+		/*$("#rez_tablh input").on("keyup", function(){
+		    var filterN = $("#thnumber input").val(),
+		        filterF = $("#thFIO input").val(),
+		        filterG = $("#thnumberGroup input").val();
+
+		    $("#rez_tab tr").each(function () {
+		        var n = $(this).find('#number').text(),
+		            f = $(this).find('#FIO').text(),
+		            g =$(this).find('#numberGroup').text();
+		        if (n.search(new RegExp(filterN,"i")) < 0 ||
+		            f.search(new RegExp(filterI,"i")) < 0 ||
+		            g.search(new RegExp(filterG,"i")) < 0) {
+		            $(this).hide();
+		        } else {
+		            $(this).show();
+		        }
+		    });
+		});*/
+	</script>
+  </body>
+</html>

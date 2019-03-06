@@ -1,0 +1,141 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+@using DiarySchema.Models
+
+@model LecturerViewModel
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Уник</title>
+</head>
+<body>
+    <div>
+        <h3>название предметов для журнала</h3>
+        <table border="1">
+            @foreach (var b in Model.NamesOfStudents)
+            {
+                <tr>
+                    <td><p>@b</p></td>
+                </tr>
+            }
+        </table>
+        <h3>Оценки</h3>
+        <table border="1">
+            <tr>
+                @for (int i = 0; i < Model.MonthNames.Count; i++)
+                {
+
+                    <td colspan=@Model.DaysMonth[i]><p>@Model.MonthNames[i]</p></td>
+
+                }
+            </tr>
+
+            <tr>
+                @foreach (var b in Model.DaysSemester)
+                {
+
+                    <td><p>@b</p></td>
+
+                }
+            </tr>
+        </table>
+        @using (Html.BeginForm())
+            {
+
+                for (int i = 0; i < Model.ListOfGrades.Count; i++)
+                {
+                    for (int j = 0; j < Model.ListOfGrades[i].Count; j++)
+                    {
+
+                    @Html.HiddenFor(m => m.ListOfGrades[i][j].Id)
+                    @Html.HiddenFor(m => m.ListOfGrades[i][j].Date)
+                    @Html.HiddenFor(m => m.ListOfGrades[i][j].TableOfGradeId)
+                    @Html.HiddenFor(m => m.ListOfGrades[i][j].StudentId)
+                    @Html.EditorFor(m => m.ListOfGrades[i][j].Value)
+
+                }
+            }
+            <button name="action" value="Journal">Сохранить</button>
+        }
+
+        <h3>названиями месяцев</h3>
+        <table border="1">
+            @for (int i = 0; i < Model.MonthNames.Count; i++)
+            {
+                <tr>
+                    <td colspan=@Model.DaysMonth[i]><p>@Model.MonthNames[i]</p></td>
+                </tr>
+            }
+        </table>
+        <h3>день месяца + день недели.</h3>
+        <table border="1">
+            @foreach (var b in Model.DaysSemester)
+            {
+                <tr>
+                    <td><p>@b</p></td>
+                </tr>
+            }
+        </table>
+        <h4>Экзамены:</h4>
+        @using (Html.BeginForm())
+            {
+                for (int i = 0; i < Model.ExamGrades.Count; i++)
+                {
+                @Html.HiddenFor(m => m.ExamGrades[i].Id)
+                @Html.HiddenFor(m => m.ExamGrades[i].Date)
+                @Html.HiddenFor(m => m.ExamGrades[i].TableOfGradeId)
+                @Html.HiddenFor(m => m.ExamGrades[i].StudentId)
+                @Html.EditorFor(m => m.ExamGrades[i].Value)
+            }
+            <button name="action" value="Exam">Сохранить</button>
+        }
+
+        <h4>Зачёты</h4>
+        @using (Html.BeginForm())
+            {
+                for (int i = 0; i < Model.PassFailTestGrades.Count; i++)
+                {
+                @Html.HiddenFor(m => m.PassFailTestGrades[i].Id)
+                @Html.HiddenFor(m => m.PassFailTestGrades[i].Date)
+                @Html.HiddenFor(m => m.PassFailTestGrades[i].TableOfGradeId)
+                @Html.HiddenFor(m => m.PassFailTestGrades[i].StudentId)
+                @Html.EditorFor(m => m.PassFailTestGrades[i].Value)
+            }
+            <button name="action" value="PassFailTest">Сохранить</button>
+        }
+        <h4>Курсовая работа</h4>
+        @using (Html.BeginForm())
+            {
+                for (int i = 0; i < Model.CoursePaperGrades.Count; i++)
+                {
+                @Html.HiddenFor(m => m.CoursePaperGrades[i].Id)
+                @Html.HiddenFor(m => m.CoursePaperGrades[i].Date)
+                @Html.HiddenFor(m => m.CoursePaperGrades[i].TableOfGradeId)
+                @Html.HiddenFor(m => m.CoursePaperGrades[i].StudentId)
+                @Html.EditorFor(m => m.CoursePaperGrades[i].Value)
+            }
+            <button name="action" value="CoursePaper">Сохранить</button>
+        }
+        <h4>Практика</h4>
+        @using (Html.BeginForm())
+            {
+                for (int i = 0; i < Model.PracticalWorkGrades.Count; i++)
+                {
+                @Html.HiddenFor(m => m.PracticalWorkGrades[i].Id)
+                @Html.HiddenFor(m => m.PracticalWorkGrades[i].Date)
+                @Html.HiddenFor(m => m.PracticalWorkGrades[i].TableOfGradeId)
+                @Html.HiddenFor(m => m.PracticalWorkGrades[i].StudentId)
+                @Html.EditorFor(m => m.PracticalWorkGrades[i].Value)
+            }
+            <button name="action" value="PracticalWork">Сохранить</button>
+        }
+    </div>
+</body>
+</html>
+
+

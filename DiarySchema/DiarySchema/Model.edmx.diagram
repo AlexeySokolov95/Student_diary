@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c2c24512ee2c4ad585f11538395b53b4" Name="Diagram1">
+        <EntityTypeShape EntityType="Diary2Model.Groups" Width="1.5" PointX="0.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Diary2Model.Semester" Width="1.5" PointX="6" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Diary2Model.Students" Width="1.5" PointX="1.5" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Diary2Model.Subjects" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Diary2Model.TableEntry" Width="1.5" PointX="10.5" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Diary2Model.TableOfGrades" Width="1.5" PointX="8.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Diary2Model.Teachers" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Diary2Model.TeachersGroupsSubjects" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Diary2Model.TheTasks" Width="1.5" PointX="6" PointY="3.5" IsExpanded="true" />
+        <AssociationConnector Association="Diary2Model.FK_dbo_Groups_dbo_Students_MonitorId" ManuallyRouted="false" />
+        <AssociationConnector Association="Diary2Model.FK_dbo_Students_dbo_Groups_GroupId" ManuallyRouted="false" />
+        <AssociationConnector Association="Diary2Model.FK_dbo_TeachersGroupsSubjects_dbo_Groups_GroupId" ManuallyRouted="false" />
+        <AssociationConnector Association="Diary2Model.FK_dbo_TheTasks_dbo_Groups_GroupId" ManuallyRouted="false" />
+        <AssociationConnector Association="Diary2Model.FK_dbo_TableOfGrades_dbo_Semester_SemesterId" ManuallyRouted="false" />
+        <AssociationConnector Association="Diary2Model.FK_dbo_TableEntry_dbo_Students_StudentId" ManuallyRouted="false" />
+        <AssociationConnector Association="Diary2Model.FK_dbo_TeachersGroupsSubjects_dbo_Subjects_SubjectId" ManuallyRouted="false" />
+        <AssociationConnector Association="Diary2Model.FK_dbo_TableEntry_dbo_TableOfGrades_TableOfGradeId" ManuallyRouted="false" />
+        <AssociationConnector Association="Diary2Model.FK_dbo_TableOfGrades_dbo_TeachersGroupsSubjects_TeachersGroupsSubjectId" ManuallyRouted="false" />
+        <AssociationConnector Association="Diary2Model.FK_dbo_TeachersGroupsSubjects_dbo_Teachers_TeacherId" ManuallyRouted="false" />
+        <AssociationConnector Association="Diary2Model.FK_dbo_TheTasks_dbo_Teachers_TeacherId" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,29 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>TGS</title>
+    @Scripts.Render("~/scripts/jquery-3.1.1.js")
+    @Scripts.Render("~/scripts/jquery.unobtrusive-ajax.min.js")
+</head>
+<body>
+    <div>
+        @using (Ajax.BeginForm("LecturerGroupSubjectSearch", new AjaxOptions { UpdateTargetId = "results" }))
+        {
+            @Html.DropDownList("groupId", ViewBag.Groups as SelectList)
+            @Html.DropDownList("lecturerId", ViewBag.Lecturers as SelectList)
+            @Html.DropDownList("subjectId", ViewBag.Subjects as SelectList)
+
+            <input type="submit" value="Поиск" />
+        }
+        <div id="results"></div>
+    </div>
+
+</body>
+</html>

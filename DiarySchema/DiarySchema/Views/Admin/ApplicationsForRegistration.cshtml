@@ -1,0 +1,28 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ApplicationsForRegistration</title>
+</head>
+<body>
+    @Scripts.Render("~/scripts/jquery-3.1.1.js")
+    @Scripts.Render("~/scripts/jquery.unobtrusive-ajax.min.js")
+    @using (Ajax.BeginForm("ApplicationsForRegistrationSearch", new AjaxOptions { UpdateTargetId = "results" }))
+    {
+        <input type="text" name="firstName" />
+        <input type="text" name="secondName" />
+        <input type="text" name="middleName" />
+        <input type="number" name="number" />
+        <input type="number" name="group" />
+
+        <input type="submit" value="Поиск" />
+    }
+    <div id="results"></div>
+</body>
+</html>

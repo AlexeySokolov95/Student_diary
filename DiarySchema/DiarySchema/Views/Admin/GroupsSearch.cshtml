@@ -1,0 +1,44 @@
+﻿@using DiarySchema.Models
+
+@model IEnumerable<Groups>
+
+<table class="table table-hover table-bordered sort" cellspacing="0" id="rez_tab">
+    <thead>
+        <tr style="border: 1px solid #13008A;">
+            <td>№</td>
+            <td>Год поступления</td>
+            <td>Факультет</td>
+            <td>Степень</td>
+            <td>Форма обучения</td>
+            <td>MonitorId</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var b in Model)
+        {
+            <tr>
+                <td id="number">@b.Number</td>
+                <td id="YearOfAdmission">@b.YearOfAdmission</td>
+                <td id="Faculty">@b.Faculty</td>
+                <td id="Degree">@b.Degree</td>
+                <td id="FormOfStudy">@b.FormOfStudy</td>
+                <td>@b.MonitorId</td>
+                <td style="border-style: none; width: 85px">
+                    <a href="#"><span class="glyphicon glyphicon-edit" title="Редактировать"></span></a>
+                    <a href="#myModal" data-toggle="modal" role="dialog" data-backdrop="static"><span class="glyphicon glyphicon-remove" title="Удалить"></span></a>
+                </td>
+            </tr>
+        }       
+    </tbody>
+</table>
+
+
+
+@*@foreach (var b in Model)
+            {
+    <tr>
+        <td><p>@b.Number</p></td>
+        <td><p>@b.Faculty</p></td>
+        <td><p>@b.Degree</p></td>
+    </tr>
+}*@

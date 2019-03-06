@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Преподователь-группа-предмет</title>
+    
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script  type="text/javascript" src="js/jquery-3.2.0.js"></script>
+    <script  type="text/javascript" src="js/js.js"></script>
+    <link href="css/style.css" rel="stylesheet">
+
+<!--     <script>
+        $(document).ready(function(){
+            $("#btn3").click(function(){
+                $(".td").append("<td  style='min-width:83px;'><input class='form-control' id='id_username' maxlength='30' name='username' type='text' style='padding:0px; height:20px;'/></td>");
+                $(".th").append("<th style='min-width:83px;'><input type='date' id='date' name='date' value='2017-03-03'></th>");
+                $(".button").append("<td><button type='button'  class='btn btn-primary btn-xs btn-block'>save</button></td>");
+            });         
+        });
+      </script>-->
+  </head>
+  <body>
+    
+    <div class="container">
+        
+            <!---->
+            <header>
+                <div class="row">
+                    
+                        <div class="col-xs-12 ">
+                            <div class=" col-xs-2"> 
+                                    <div class="logoImg"> <img src="image/logo.png"></div>                      
+                            </div>
+                            <div class="logoTxt col-xs-5">
+                                <h1 >Электронный дневник</h1>
+                            </div>
+
+                            <div class=" col-xs-5 ">
+                                <div class="">
+                                    <div class="account">
+                                        <a href="#" >
+                                        <div class="img-container1"> 
+                                            <img src="image/face.jpg" alt="лицо отправителя сообщения">
+                                         </div>                             
+                                        </a>      
+                                                              
+                                    </div>
+                                </div>
+                                <div class="col-xs-2 logoTxt">
+                                    <h3 align="left">Фамилия<br> Имя</h3>
+                                    <div class="btn btn-primary">Выйти</div>
+                                </div>                             
+                            </div>
+                        </div>   
+                    
+                </div>              
+            </header>
+            <!---->
+           <nav class="navbar navbar-inverse"> 
+                <div class="container-fluid"> 
+                    <div class="navbar-header"> 
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-9" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>                           
+                        </button> <a href="#" class="navbar-brand">Дневник</a> 
+                    </div> 
+                    <div class="navbar-collapse collapse in" id="bs-example-navbar-collapse-9" aria-expanded="false">
+                         <ul class="nav navbar-nav">
+                            <li><a href="#">Моя страница</a></li>                      
+                            <li><a href="admin_student.html">Студент</a></li>
+                            <li><a href="admin_subject.html">Предмет</a></li>
+                            <li><a href="admin_teacher.html">Преподователь</a></li>
+                            <li><a href="admin_group.html">Группа</a></li>
+                            <li><a href="admin_semester.html">Семестр</a></li>
+                            <li class="active"><a href="admin_teacherGroupSubject.html">преподаватель-предмет-группа</a></li>
+                            <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Связь таблиц<span class="caret"></span></a>
+                              <ul class="dropdown-menu">
+                                <li><a href="#">Задачи</a></li>
+                                <li><a href="#">Оценки</a></li>                         
+                              </ul>
+                            </li>
+                        </ul> 
+                    </div> 
+                </div> 
+             </nav>
+            <!---->
+
+
+
+
+            <main>
+                                <div class="row">
+                                    <div class="col-xs-6 col-xs-offset-3">
+                                        <h2>Преподователь-группа-предмет</h2>
+                                        <p>сюда надо вписать правила, как пользоваться этой страницей</p>
+            
+                                    </div>
+                                </div>    
+                                <!-- создание связей  -->
+                                <form id='form'>
+                                <div class="row">
+                                    <div class="col-xs-3 col-xs-offset-1">
+                                        <h3 align='center'>Преподаватель</h3>
+                                        <select  class="form-control" id="sel1" style="text-align: center;">
+                                        <option>Юрьев Игорь Алексеевич</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <h3 align='center'>Группа</h3>
+                                        <select  class="form-control" id="sel2" style="text-align: center;">
+                                        <option>1190</option>
+                                        <option>1290</option>
+                                        <option>1390</option>
+                                        <option>1490</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-xs-4 ">
+                                    <h3 >Предмет</h3>
+                                        <label class="radio">                           
+                                            <input type="radio" name="lecturerRaduo" class="12" id="selectRadio1" onchange="hide()" checked value="1"><select  class="form-control" id="sel3" style="text-align: center;">
+                                            <option>матан</option>
+                                            <option>физра</option>
+                                            <option>очень длинное названиеывывыв</option>
+                                            <option>1490</option>
+                                            </select>
+                                        </label>
+                                        <label class="radio">                           
+                                            <input type="radio" name="lecturerRaduo" class="12" id="selectRadio2" onchange="show()" value="2" ><input type="text" name="" id="sel4" placeholder="ВВедите текст"  style="width: 100%;" disabled="disabled" pattern="[А-Яа-яЁё]{1,}">
+                                        </label>
+                                    </div>
+                                </div>  
+                                </form>
+                                <!-- модальное окно  -->
+                                
+            <div class="modal fade" id="CreatModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="myModalLabel">Одобрения на оздания связи</h4>                   
+                  </div>
+
+            <div class="modal-body">
+                <h4>Вы уверены, что хотите создать связ Преподаватель-группа-предмет?</h4>
+                <form>
+                    <p id="p1"></p>
+                <input type="submit"  class="btn btn-danger btn-lg btn-block">
+                    </form>
+                  </div>
+
+                </div>
+              </div>
+            </div> 
+                                <!-- End модальное окно  -->
+                                <!-- end создание связей  -->
+
+
+                                <!-- кнопка добавить -->
+                                <div class="row" style="padding-top: 30px;">
+                                    <div class="col-xs-10 col-xs-offset-1">
+                                        <input type="button" class="btn btn-primary btn-lg btn-block" id="r123" value="Добавть"  data-target="#CreatModal" data-toggle="modal">
+                                    </div>
+                                </div>  
+                                <!-- таблица связей -->
+                                <div class="row" style="padding-top: 30px;">
+                                    <div class="col-xs-10 col-xs-offset-1">
+                                        <table class="table table-bordered table-condensed table-hover">
+                                            <caption ><h1 align="center">Таблица связей</h1></caption>
+                                            <tr>
+                                                <th>Преподавател</th>    
+                                                <th>Группа</th>
+                                                <th>Предмет</th>                            
+                                            </tr>
+                                            <tr>
+                                                <td>Юрьев Игорь Алексеевич</td>
+                                                <td>1190</td>
+                                                <td>матан</td>
+                                                <td style="border: none;" ><a href="#"><span  class="glyphicon glyphicon-edit" title="Редактировать"></span></a>
+                                        <a href="#myModal" data-toggle="modal" role="dialog" data-backdrop="static"><span class="glyphicon glyphicon-remove" title="Удалить"></span></a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Юрьев Игорь Алексеевич</td>
+                                                <td>1190</td>
+                                                <td>физра</td>
+                                                <td style="border: none;" ><a href="#"><span  class="glyphicon glyphicon-edit" title="Редактировать"></span></a>
+                                        <a href="#myModal" data-toggle="modal" role="dialog" data-backdrop="static"><span class="glyphicon glyphicon-remove" title="Удалить"></span></a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Юрьев Игорь Алексеевич</td>
+                                                <td>1190</td>
+                                                <td>не понтно какой предмет</td>
+                                                <td style="border: none;" ><a href="#"><span  class="glyphicon glyphicon-edit" title="Редактировать"></span></a>
+                                        <a href="#myModal" data-toggle="modal" role="dialog" data-backdrop="static"><span class="glyphicon glyphicon-remove" title="Удалить"></span></a></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>  
+
+                                
+<div id="myModal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Заголовок модального окна -->
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Удалить?</h4>
+      </div>
+      <!-- Основное содержимое модального окна -->
+      <div class="modal-body">
+        Вы уверены что хотитет удалить? Вы уже потом не вернете данные.
+      </div>
+      <!-- Футер модального окна -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+        <button type="button" class="btn btn-danger">Удалить</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+                        </main>
+
+
+
+
+
+            <!---->
+            <footer>
+            <div class="row">
+            <div class="col-xs-12">
+                <div style="float: right"> <h5>Все права защищены © 2017</h5>по всем вопросам пишите по адресу vlad@htmlbook.ru </div>
+                <div style="float: left">Создатели сайта: <ul><li>Юрьев Игорь</li><li>Соколов Алексей</li></ul>
+            </div>
+                </div>
+                </div>
+            </footer>
+        </div>
+         
+        <script type="text/javascript">         
+            // блокировка одного из полей по выбору радио           
+            function show() {
+                $("#sel3").prop("disabled", true);
+                $("#sel4").prop("disabled", false);             
+            }
+            function hide() {
+                 $("#sel4").prop("disabled", true);
+                 $("#sel3").prop("disabled", false);                 
+            }
+
+            
+            // передача значения в модальное окно
+
+$(document).ready(function(){
+$('#r123').click(function(){
+
+    var set1 = $("#sel1").val();
+    var set2 = $("#sel2").val();
+
+    if($('#selectRadio1').prop("checked"))
+    {       
+        var set3 = $("#sel3").val();
+
+        $("#p1").html("<b>преподователь:</b> " + set1 + " <b>Группа:</b> "+set2+ " <b> Предмет:</b> "+set3 );
+    }
+    else{
+        var text=$('#sel4').val();
+        $("#p1").html("<b>преподователь:</b> " + set1 + " <b>Группа:</b> "+set2+ " <b> Предмет:</b> "+text );
+        
+    }
+});
+});
+        </script>
+
+     <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>

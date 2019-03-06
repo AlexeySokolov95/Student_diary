@@ -1,0 +1,41 @@
+﻿@model DiarySchema.Models.TeachersGroupsSubjects
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>EditLecturerGroupSubject</title>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        
+        <div class="form-horizontal">
+            <h4>TeachersGroupsSubjects</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id)
+    
+            @Html.DropDownListFor(m => Model.GroupId, ViewBag.Groups as SelectList)
+            @Html.DropDownListFor(m => Model.TeacherId, ViewBag.Lecturers as SelectList)
+            @Html.DropDownListFor(m => Model.SubjectId, ViewBag.Subjects as SelectList)
+    
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+    
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</body>
+</html>

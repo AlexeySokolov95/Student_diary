@@ -1,0 +1,249 @@
+﻿@model DiarySchema.Models.TeachersGroupsSubjects
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-9" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button> <a href="#" class="navbar-brand">Дневник</a>
+        </div>
+        <div class="navbar-collapse collapse in" id="bs-example-navbar-collapse-9" aria-expanded="false">
+            <ul class="nav navbar-nav">
+                <li><a href="lecturer_my_page.html">Моя страница</a></li>
+                <li><a href="/Lecturer/Index">Журнал</a></li>
+                <li><a href="/Lecturer/Archive">Архив</a></li>
+                <li class="active"><a href="#">Преподаватель-группа-предмет</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<main>
+    <div class="row">
+        <div class="col-xs-6 col-xs-offset-3">
+            <h2>Преподователь-группа-предмет</h2>
+            <p>сюда надо вписать правила, как пользоваться этой страницей</p>
+        </div>
+    </div>
+    <!-- создание связей  -->
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(m => Model.TeacherId, new { @Value = ViewBag.Lecturer })
+        <div class="row">
+            <div class="col-xs-4 col-xs-offset-1">
+                <h3>Преподаватель</h3>
+                <p id="sel1"><b>@ViewBag.Lecturer.FullName</b></p>
+                @*<select class="form-control"  style="text-align: center;">
+                    <option>@ViewBag.Lecturer</option>
+                </select>*@
+            </div>
+            <div class="col-xs-2">
+                <h3>Группа</h3>
+                @*@Html.DropDownListFor(m => Model.GroupId, ViewBag.Groups as SelectList)*@
+                <select class="form-control" id="GroupId" name="GroupId" style="text-align: center; width:60px;">
+                    @foreach (var p in ViewBag.Groups as SelectList)
+                    { 
+                        <option value="@p.Value">@p.Text</option>
+                    }
+                </select>          
+          </div>
+            <div class="col-xs-4">
+                <h3>Предмет</h3>
+                @*@Html.DropDownListFor(m => Model.SubjectId, ViewBag.Subjects as SelectList)*@
+                <label class="radio">
+                    <input type="radio" name="isNewSubject" class="12" id="isNewSubject" onchange="hide()" checked value="false">
+                    <select class="form-control SubjectIdSelect" id="SubjectId" name="SubjectId" style="text-align: center;">
+                        @foreach(var p in ViewBag.Subjects as SelectList)
+                        {
+                            <option value="@p.Value">@p.Text</option>
+                        }
+                    </select>
+                </label>
+                <div class="radio">
+                    <input type="radio" name="isNewSubject" class="12" id="isNewSubject" onchange="show()" value="true">
+                    <input type="text" name="newSubjectName" id="newSubjectName" class="SubjectIdInput" placeholder="Введите предмет" style="width: 100%;" disabled="disabled" pattern="[А-Яа-яЁё]{1,}">
+                    <h3>Кафедра</h3>
+                    <input type="text" id="newSubjectDepartament" name="newSubjectDepartament" class="newSubjectDepartament"  placeholder="Введите предмет" style="width: 100%;" disabled="disabled" pattern="[А-Яа-яЁё]{1,}">
+                    @*@Html.TextBox("newSubjectDepartament")*@
+                </div>
+            </div>
+        </div>
+
+    <!-- модальное окно  -->
+
+    <div class="modal fade" id="CreatModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="myModalLabel">Одобрения на оздания связи</h4>
+                </div>
+
+                <div class="modal-body">
+                    <h4>Вы уверены, что хотите создать связ Преподаватель-группа-предмет?</h4>
+                    <form>
+                        <p id="p1"></p>
+                        <input type="submit" value="Create" class="btn btn-danger btn-lg btn-block">
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- End модальное окно  -->
+    <!-- end создание связей  -->
+    <!-- кнопка добавить -->
+    <div class="row" style="padding-top: 30px;">
+        <div class="col-xs-10 col-xs-offset-1">
+            <input type="button" class="btn btn-danger btn-block" id="r123" value="Добавть" data-target="#CreatModal" data-toggle="modal">
+        </div>
+    </div>
+    }
+    <!-- таблица связей -->
+    <div class="row" style="padding-top: 30px;">
+        <div class="col-xs-10 col-xs-offset-1">
+            <table class="table table-bordered table-condensed table-hover">
+                <caption><h1 align="center">Таблица связей</h1></caption>
+                <tr>
+                    <th>Преподавател</th>
+                    <th>Группа</th>
+                    <th>Предмет</th>
+                </tr>
+                @foreach(var p in ViewBag.TGS)
+                {
+                    <tr>
+                        <td>@p.Teachers.FullName</td>
+                        <td>@p.Groups.Number</td>
+                        <td>@p.Subjects.Name</td>
+                    </tr>
+                }
+                @*<tr>
+                    <td>Юрьев Игорь Алексеевич</td>
+                    <td>1190</td>
+                    <td>матан</td>
+                    <td style="border: none;">
+                        <a href="#"><span class="glyphicon glyphicon-edit" title="Редактировать"></span></a>
+                        <a href="#myModal" data-toggle="modal" role="dialog" data-backdrop="static"><span class="glyphicon glyphicon-remove" title="Удалить"></span></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Юрьев Игорь Алексеевич</td>
+                    <td>1190</td>
+                    <td>физра</td>
+                    <td style="border: none;">
+                        <a href="#"><span class="glyphicon glyphicon-edit" title="Редактировать"></span></a>
+                        <a href="#myModal" data-toggle="modal" role="dialog" data-backdrop="static"><span class="glyphicon glyphicon-remove" title="Удалить"></span></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Юрьев Игорь Алексеевич</td>
+                    <td>1190</td>
+                    <td>не понтно какой предмет</td>
+                    <td style="border: none;">
+                        <a href="#"><span class="glyphicon glyphicon-edit" title="Редактировать"></span></a>
+                        <a href="#myModal" data-toggle="modal" role="dialog" data-backdrop="static"><span class="glyphicon glyphicon-remove" title="Удалить"></span></a>
+                    </td>
+                </tr>*@
+            </table>
+        </div>
+    </div>
+
+
+    <div id="myModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Заголовок модального окна -->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">Удалить?</h4>
+                </div>
+                <!-- Основное содержимое модального окна -->
+                <div class="modal-body">
+                    Вы уверены что хотитет удалить? Вы уже потом не вернете данные.
+                </div>
+                <!-- Футер модального окна -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                    <button type="button" class="btn btn-danger">Удалить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+</main>
+
+<script type="text/javascript">
+
+        	// блокировка одного из полей по выбору радио
+        	function show() {
+        	    $(".SubjectIdSelect").prop("disabled", true);
+        	    $(".SubjectIdInput").prop("disabled", false);
+        	    $("#newSubjectDepartament").prop("disabled", false);
+   			}
+   			function hide() {
+   			    $(".SubjectIdInput").prop("disabled", true);
+       			 $(".SubjectIdSelect").prop("disabled", false);
+       			 $("#newSubjectDepartament").prop("disabled", true);
+   			}
+
+
+   			// передача значения в модальное окно
+
+$(document).ready(function(){
+    $('#r123').click(function(){
+
+	    var set1 = $("#sel1").text();
+	    var set2 = $("#GroupId option:selected").text();
+
+	    if ($('#isNewSubject').prop("checked"))
+	    {
+	        var set3 = $("#SubjectId option:selected").text();
+
+		    $("#p1").html("<b>преподователь:</b> " + set1 + " <b>Группа:</b> "+set2+ " <br><b> Предмет:</b> "+set3 );
+	    }
+	    else{
+	        var text = $('.SubjectIdInput').val();
+	        var text1 = $("#newSubjectDepartament").val();
+		    $("#p1").html("<b>преподователь:</b> " + set1 + " <b>Группа:</b> "+set2+ " <br><b> Предмет:</b> "+text +" <b> Кафедра:</b> "+text1 );
+
+	    }
+    });
+});
+
+</script>
+
+
+
+@*<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SelectGroupAndSubject</title>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.DropDownListFor(m => Model.GroupId, ViewBag.Groups as SelectList)
+        @Html.HiddenFor(m => Model.TeacherId, new { @Value = ViewBag.Lecturer })
+        @Html.RadioButton("isNewSubject", "false")
+        @Html.DropDownListFor(m => Model.SubjectId, ViewBag.Subjects as SelectList)
+        @Html.RadioButton("isNewSubject", "true")
+        <h2>Имя</h2>
+        @Html.TextBox("newSubjectName")
+        <h2>Кафедра</h2>
+        @Html.TextBox("newSubjectDepartament")
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    }
+
+</body>
+</html>*@

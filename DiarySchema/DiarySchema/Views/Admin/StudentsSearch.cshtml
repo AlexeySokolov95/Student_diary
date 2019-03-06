@@ -1,0 +1,32 @@
+﻿@using DiarySchema.Models
+@model IEnumerable<Students>
+
+<table class="table table-hover table-bordered sort" cellspacing="0" id="rez_tab">
+    <thead>
+        <tr style="border: 1px solid #13008A;">
+            <td>№</td>
+            <td>ФИО</td>
+            <td>Дата рождения</td>
+            <td>№ группа</td>
+            <td>UserName</td>
+            <td>Email</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var b in Model)
+        {
+            <tr>
+                <td id="number">@b.Number</td>
+                <td id="FIO">@b.FullName</td>
+                <td>@b.YearOfBirth</td>
+                <td id="numberGroup">@b.GroupId</td>
+                <td>@b.UserName</td>
+                <td>@b.Email</td>
+                <td style="border-style: none; width: 85px; height: 35px;">
+                    <a href="/Admin/EditStudents/@b.Id"><span class="glyphicon glyphicon-edit" title="Редактировать"></span></a>
+                    <a href="/Admin/DeleteStudents/@b.Id" data-toggle="modal" role="dialog" data-backdrop="static"><span class="glyphicon glyphicon-remove" title="Удалить"></span></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

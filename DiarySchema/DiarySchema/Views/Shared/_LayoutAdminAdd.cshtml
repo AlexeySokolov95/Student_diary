@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+   <title>Студент</title>@*надо значение страницы поместить*@ 
+    <!-- Bootstrap -->
+    <link href="/Content/bootstrap.min.css" rel="stylesheet">
+    <link href="/Content/style.css" rel="stylesheet">
+    <script type="text/javascript" src="/Scripts/jquery.min.js"></script>
+    <script type="text/javascript" src="/Scripts/jquery-3.2.0.js"></script>
+    <script type="text/javascript" src="/Scripts/js.js"></script>
+    <script type="text/javascript" src="/Scripts/validator.min.js"></script>
+</head>
+<body>    
+    <div class="container">
+        <!---->
+        <header>
+            <div class="container">
+                <div class="row">
+                    <div class=" col-xs-3 "><img src="/image/diary.png" alt="logo" height="200"></div>
+                    <div class="col-xs-5  col-xs-offset-1" style="margin-top:70px; ">
+                        <h1>Электронный дневник</h1>
+                    </div>
+                    <div class="col-xs-3 "><img src="/image/logo.png" alt="logo1" height="200"></div>
+                </div>
+            </div>
+        </header>
+        <!---->
+        @RenderBody()
+        <footer>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div style="float: right"> <h5>Все права защищены © 2017</h5>по всем вопросам пишите по адресу oktyabr007@mail.ru </div>
+                    <div style="float: left">Создатели сайта: <ul><li>Юрьев Игорь</li><li>Соколов Алексей</li></ul></div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script type="text/javascript" src="/Scripts/jquery-latest.js"></script>
+    <script src="/Scripts/bootstrap.min.js"></script> 
+</body>
+</html>

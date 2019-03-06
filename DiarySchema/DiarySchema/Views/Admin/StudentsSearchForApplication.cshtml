@@ -1,0 +1,17 @@
+﻿@model IEnumerable<DiarySchema.Models.Students>
+
+<table class="table">
+    @if (Model != null)
+    {
+        foreach (var b in Model)
+        {
+            <tr>
+                <td><p>@b.FullName</p></td>
+                <td><p>@b.Number</p></td>
+                <td><p>@b.YearOfBirth</p></td>
+                @Html.ActionLink("Привязать", "CompletionStudentRegistration", new { applicationId = ViewBag.ApplicationId, studentId = b.Id });
+            </tr>
+        }
+    }
+
+</table>

@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище Diary2Model1Container" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="Groups">
+      <EntityTypeMapping TypeName="Diary2Model1.Groups">
+        <MappingFragment StoreEntitySet="Groups">
+          <ScalarProperty Name="FormOfStudy" ColumnName="FormOfStudy" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="YearOfAdmission" ColumnName="YearOfAdmission" />
+          <ScalarProperty Name="Faculty" ColumnName="Faculty" />
+          <ScalarProperty Name="Degree" ColumnName="Degree" />
+          <ScalarProperty Name="MonitorId" ColumnName="MonitorId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Students">
+      <EntityTypeMapping TypeName="Diary2Model1.Students">
+        <MappingFragment StoreEntitySet="Students">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="YearOfBirth" ColumnName="YearOfBirth" />
+          <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Subjects">
+      <EntityTypeMapping TypeName="Diary2Model1.Subjects">
+        <MappingFragment StoreEntitySet="Subjects">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Departament" ColumnName="Departament" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TableEntry">
+      <EntityTypeMapping TypeName="Diary2Model1.TableEntry">
+        <MappingFragment StoreEntitySet="TableEntry">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="TableOfGradeId" ColumnName="TableOfGradeId" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TableOfGrades">
+      <EntityTypeMapping TypeName="Diary2Model1.TableOfGrades">
+        <MappingFragment StoreEntitySet="TableOfGrades">
+          <ScalarProperty Name="SemesterId" ColumnName="SemesterId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TeachersGroupsSubjectId" ColumnName="TeachersGroupsSubjectId" />
+          <ScalarProperty Name="YearOfStudy" ColumnName="YearOfStudy" />
+          <ScalarProperty Name="TypeOfKnowledgeControl" ColumnName="TypeOfKnowledgeControl" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Teachers">
+      <EntityTypeMapping TypeName="Diary2Model1.Teachers">
+        <MappingFragment StoreEntitySet="Teachers">
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="Departament" ColumnName="Departament" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TeachersGroupsSubjects">
+      <EntityTypeMapping TypeName="Diary2Model1.TeachersGroupsSubjects">
+        <MappingFragment StoreEntitySet="TeachersGroupsSubjects">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+          <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+          <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TheTasks">
+      <EntityTypeMapping TypeName="Diary2Model1.TheTasks">
+        <MappingFragment StoreEntitySet="TheTasks">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
+          <ScalarProperty Name="TaskText" ColumnName="TaskText" />
+          <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+          <ScalarProperty Name="Documents" ColumnName="Documents" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Semester">
+      <EntityTypeMapping TypeName="Diary2Model1.Semester">
+        <MappingFragment StoreEntitySet="Semester">
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="BeginningDate" ColumnName="BeginningDate" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

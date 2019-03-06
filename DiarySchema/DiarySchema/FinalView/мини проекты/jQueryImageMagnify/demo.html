@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Language" content="ru">
+
+
+<title>Jquery Image Magnify v1.11. Увеличение изображения при щелчке мышью.</title>
+
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
+<script type="text/javascript" src="js/jquery.magnifier.js">
+
+/***********************************************
+* jQuery Image Magnify- (c) Dynamic Drive DHTML code library (www.dynamicdrive.com)
+* This notice MUST stay intact for legal use
+* Visit Dynamic Drive at http://www.dynamicdrive.com/ for this script and 100s more
+***********************************************/
+
+</script>
+
+</head>
+<body>
+
+<h1 align="center">Jquery Image Magnify v1.11. Увеличение изображения при щелчке мышью.</h1>
+
+
+<table align="center" bgcolor="#E6E6FA" border="0" width="90%">
+<tr><td align="center" valign="middle"> 
+      
+
+
+<br><br><img src="images/paris.jpg" class="magnify" align="left" vspace="50" hspace="30" alt="" style="width:150px; height:100px;">
+
+<img src="images/paris.jpg" class="magnify" align="right" vspace="50" hspace="30" alt="" style="width:150px; height:100px;">
+ 
+ <br><br><img src="images/portrait.jpg" class="magnify" alt="" style="width:150px; height:120px;">
+
+
+<br><br><br><br>
+
+ <form action="/">
+ <select id="imageselect">
+ <option>Выберите изображение и нажмите, чтобы увеличить</option>
+ <option>Amsterdam 1</option>
+ <option>Amsterdam 2</option>
+ <option>Amsterdam 3</option>
+ <option>Amsterdam 4</option>
+ </select>
+ </form>
+
+ <img id="imagebox" src="images/amster1.jpg" class="magnify" alt="" data-magnifyby="3" style="width:200px;">
+
+ <script type="text/javascript">
+
+ var imagebox=document.getElementById("imagebox")
+ var imageselect=document.getElementById("imageselect")
+ var imagelist=["images/amster1.jpg", "images/amster2.jpg", "images/amster3.jpg", "images/amster4.jpg"]
+
+ imageselect.onchange=function(){
+ if (this.selectedIndex!=0){
+ imagebox.src=imagelist[this.selectedIndex-1]
+jQuery(imagebox).imageMagnify({
+ magnifyby: 3
+ })
+ }
+ }
+
+ </script>
+
+<br><br>
+</td></tr></table> 
+
+
+<br><br>
+</body>
+</html>

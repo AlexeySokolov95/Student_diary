@@ -1,0 +1,299 @@
+﻿
+@{
+    Layout = null;
+}
+@using DiarySchema.Models
+@model StudentJournalViewModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Студент</title>
+    <meta charset="utf-8">
+    @Scripts.Render("~/Scripts/jquery-3.2.0.js")
+    @Scripts.Render("~/Scripts/js.js")
+    <link href="/Content/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link href="/Content/style.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container">
+        <!---->
+        <header>
+            <div class="row">
+
+                <div class="col-xs-12 ">
+                    <div class=" col-xs-2">
+                        <div class="logoImg"> <img src="/image/logo.png"></div>
+                    </div>
+                    <div class="logoTxt col-xs-5">
+                        <h1>Электронный дневник</h1>
+                    </div>
+
+                    <div class=" col-xs-5 ">
+                        <div class="">
+                            <div class="account">
+                                <a href="#">
+                                    <div class="img-container1">
+                                        <img src="/image/face.jpg" alt="лицо отправителя сообщения">
+                                    </div>
+                                </a>
+
+                            </div>
+                        </div>
+                        @if (Request.IsAuthenticated)
+                        {
+                            using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <div class="col-xs-2 logoTxt">
+                                    <h3 align="left"> Фамилия<br> Имя</h3>
+                                    <a href="javascript:document.getElementById('logoutForm').submit()">
+                                        <div class="btn btn-primary">Выйти</div>
+                                    </a>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+
+            </div>
+        </header>
+        <!---->
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-9" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button> <a href="#" class="navbar-brand">Дневник</a>
+                </div>
+                <div class="navbar-collapse collapse in" id="bs-example-navbar-collapse-9" aria-expanded="false">
+                    <ul class="nav navbar-nav">
+                        <li><a href="student_my_page.html">Моя страница</a></li>
+                        <li class="active"><a href="#">Отметки</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!---->
+        <main>
+            <!-- навигация по экзаменационным оценкам-->
+
+            <div class="row">
+                <h1 align="center">Отметки</h1>
+                <h3 align="center"><b>@ViewBag.Semester</b> семестр <b>@ViewBag.Year</b> года</h3>
+                <div class="col-xs-12 col-xs-offset-3">
+                    <!-- надо сделать по центру-->
+                    <ul class="nav nav-pills">
+                        <li role="presentation" class="active" style="width:140px; height:40px; background-color:#B4E2FE; border-style: solid; border-color: black; border-radius: 10px; text-align: center; color:#135CA0"><h4 style="font-weight: bold">Учебный год</h4></li>
+                        @foreach (var item in Model.OrderedSemesters)
+                        {
+                            <li role="presentation" class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">@item[0].Year<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    @foreach (var b in item)
+                                    {
+                                        <li><a href="@Url.Action("Index",new {year = b.Year, semesterNumber = b.Number })">@b.Number семестр</a></li>
+                                    }
+                                </ul>
+                            </li>
+                        }
+                    </ul>                    
+                </div>
+            </div>
+
+            <div class="row">
+                @if (Model.ExamGrades.Count > 0)
+                {
+                <div class="col-xs-5 col-xs-offset-1">
+                    <table class="table table-hover table-bordered" style="background-color:#D0D0F8">
+                        <caption>Экзамен</caption>
+                        <tr>
+                            <th>Дисциплина</th>
+                            <th>Оценки</th>
+                        </tr>
+
+                        @foreach (var b in Model.ExamGrades)
+                        {
+                            <tr>
+                                <td><p>@b.Subject</p></td>
+                                <td><p>@b.Value</p></td>
+                            </tr>
+                        }
+                    </table>
+
+                </div>
+                }
+                @if (Model.PassFailTestGrades.Count > 0)
+                {
+                <div class="col-xs-5">
+                    <table class="table table-hover table-bordered" style="background-color:#FCFCD3">
+                        <caption>Зачет</caption>
+                        <tr>
+                            <th>Дисциплина</th>
+                            <th>Оценки</th>
+                            @foreach (var b in Model.PassFailTestGrades)
+                            {
+                            <tr>
+                                <td><p>@b.Subject</p></td>
+                                <td><p>@b.Value</p></td>
+                            </tr>
+                            }
+                    </table>
+                </div>
+              }
+            </div>
+
+
+            <div class="row">
+                @if (Model.CoursePaperGrades.Count > 0)
+                {
+                <div class="col-xs-5 col-xs-offset-1">
+                    <table class="table table-hover table-bordered" style="background-color:#FFFFFF">
+                        <caption>Курсовая работа</caption>
+                        <tr>
+                            <th>Дисциплина</th>
+                            <th>Оценки</th>
+                        </tr>
+                        @foreach (var b in Model.CoursePaperGrades)
+                        {
+                            <tr>
+                                <td><p>@b.Subject</p></td>
+                                <td><p>@b.Value</p></td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+                }
+                @if (Model.PracticalWorkGrades.Count > 0)
+                {                
+                    <div class="col-xs-5">
+                        <table class="table table-hover table-bordered" style="background-color:#FFDFA9">
+                            <caption>Практика</caption>
+                            <tr>
+                                <th>Дисциплина</th>
+                                <th>Оценки</th>
+                            </tr>
+                            @foreach (var b in Model.PracticalWorkGrades)
+                            {
+                                <tr>
+                                    <td><p>@b.Subject</p></td>
+                                    <td><p>@b.Value</p></td>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                }
+            </div>
+        </main>
+        <!---->
+        <footer>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div style="float: right"> <h5>Все права защищены © 2017</h5>по всем вопросам пишите по адресу vlad@htmlbook.ru </div>
+                    <div style="float: left">
+                        Создатели сайта: <ul><li>Юрьев Игорь</li><li>Соколов Алексей</li></ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="/Scripts/bootstrap.min.js"></script>
+</body>
+</html>
+
+    <!--
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Уник</title>
+</head>
+<body>
+    <div>
+        <h3>название предметов для журнала</h3>
+        <table border="1">
+            @foreach (var b in Model.NamesOfSubject)
+            {
+                <tr>
+                    <td><p>@b</p></td>
+                </tr> 
+            }
+        </table>
+        <h3>Оценки</h3>
+        <table border="1">
+            <tr>
+                @for (int i = 0; i < Model.MonthNames.Count; i++)
+                {
+
+                    <td colspan=@Model.DaysMonth[i]><p>@Model.MonthNames[i]</p></td>
+
+                }
+            </tr>
+
+            <tr>
+                @foreach (var b in Model.DaysSemester)
+                {
+
+                    <td><p>@b</p></td>
+
+                }
+            </tr>
+
+            @foreach (var b in Model.SubjectsGrades)
+            {
+                <tr>
+                    @foreach (var c in b)
+                    {
+                    <td><p>@c</p></td>
+                    }
+                </tr>
+            }
+        </table>
+        <h3>названиями месяцев</h3>
+        <table border="1">
+            @for(int i = 0; i < Model.MonthNames.Count; i++)
+            {
+                <tr>
+                    <td colspan=@Model.DaysMonth[i]><p>@Model.MonthNames[i]</p></td>
+                </tr>
+            }
+        </table>
+        <h3>день месяца + день недели.</h3>
+        <table border="1">
+            @foreach (var b in Model.DaysSemester)
+            {
+                <tr>
+                    <td><p>@b</p></td>
+                </tr>
+            }
+        </table border="1">
+        <h3>3 пропуска из 24</h3>
+        <table border="1">
+            @foreach (var b in Model.Missed)
+            {
+                <tr>
+                    <td><p>@b</p></td>
+                </tr>
+            }
+        </table>
+        <h3>итоговыми оценками</h3>
+        <table border="1">
+            @foreach (var b in Model.ExamGrades)
+            {
+                <tr>
+                    <td><p>@b.Value</p></td>
+                </tr>
+            }
+        </table>
+    </div>
+</body>
+</html>
+        -->

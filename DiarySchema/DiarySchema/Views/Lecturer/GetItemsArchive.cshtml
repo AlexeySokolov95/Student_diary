@@ -1,0 +1,14 @@
+﻿
+@{
+    Layout = null;
+}
+
+<div class="col-xs-2 " id="getSubjects">
+    <h3 align="center">Дисциплина</h3>
+    <select id="Number" name="Number" class="form-control" style="font-size: 16pt; text-align: center;">
+        @foreach (var p in ViewBag.Subjects as SelectList)
+        {
+            <option value="@p.Value">@p.Text</option>
+        }
+    </select>
+</div>

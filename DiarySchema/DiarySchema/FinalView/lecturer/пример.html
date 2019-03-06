@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Отметки</title>
+    
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script  type="text/javascript" src="js/jquery-3.2.0.js"></script>
+	<script  type="text/javascript" src="js/js.js"></script>
+    <link href="css/style.css" rel="stylesheet">
+
+  </head>
+  <body>
+	
+    <div class="container">
+    	
+	    	
+	    	
+	  			 <!--выбора года меметра группы предмета-->
+	  				<div class="row">
+	  					<div class="col-xs-2 col-xs-offset-1">
+	  						<h3 align="center">Год обучения</h3>
+	  						<select  class="form-control" id="sel1" style=" font-size: 16pt; text-align: center;">
+							<option value="1">2015/2016</option>
+							<option value="2">2015/2016</option>
+							<option value="3">2016/2017</option>
+							<option value="4">2016/2017</option>
+							<option value="5">2017/2018</option>
+						  </select>
+	  					</div>
+	  					<div class="col-xs-2 ">
+	  						<h3 align="center">Семестр</h3>
+	  						<select  class="form-control" id="sel2" style=" font-size: 16pt; text-align: center;">
+							<option value="1">1 семестр</option>
+							<option value="2">2 семестр</option>							
+						  </select>
+	  					</div>
+	  					<div class="col-xs-1 ">
+	  						<h3 align="center">Группа</h3>
+	  						<select class="form-control" id="sel3" style=" font-size: 16pt; text-align: center;">
+							<option value="1">1490</option>
+							<option value="2">1590</option>							
+						  </select>
+	  					</div>
+	  					<div class="col-xs-4 ">
+	  						<h3 align="center">Предмет</h3>
+	  						<select  class="form-control" id="sel4" style=" font-size: 16pt; text-align: center;">
+							<option value="1">Проектирование интерфейса</option>
+							<option value="2">1590</option>							
+						  </select>
+	  					</div>
+	  				</div> 
+	  					<div class="row">
+	  						<div class="col-xs-9 col-xs-offset-1">
+	  							<button type="button" id="button1" class="btn btn-primary btn-lg btn-block">Обработать</button>
+							</div>
+						</div>
+						<!--конец выбора года меметра группы предмета-->
+					
+	     
+		<script type="text/javascript">
+			$("#sel1,#sel2,#sel3,#sel4").ready(function(){
+   				 if($("#sel1").val() == null)	{			 
+   							  $("#button1").attr("disabled","disabled");  }
+
+   				else $("#button1").attr("disabled","");
+	    	
+			})
+		</script>
+
+	 <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<head>
+ <style>
+ p { color:red; margin:4px; }
+ b { color:blue; }
+ </style>
+ <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+</head>
+<body>
+ <p></p>
+ <select id="single">
+   <option>Single</option>
+   <option>Single2</option>
+ </select>
+ <select id="multiple" multiple="multiple">
+   <option selected="selected">Multiple</option>
+   <option>Multiple2</option>
+   <option selected="selected">Multiple3</option>
+ </select>
+<script>
+   function displayVals() {
+     var singleValues = $("#single").val();
+     var multipleValues = $("#multiple").val() || [];
+     $("p").html("<b>Single:</b> " +
+                 singleValues +
+                 " <b>Multiple:</b> " +
+                 multipleValues.join(", "));
+   }
+   $("select").change(displayVals);
+   displayVals();
+</script>
+</body>
+</html>
+
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>XZ</title>
+<style>
+body{
+text-align:center;
+font-family:Verdana,Helvetica;
+font-size:12px;
+color:#000;
+background-color:#fff;
+margin-top:150px;
+}
+[type="radio"]{
+cursor:pointer;
+margin:5px 20px;
+}
+b{
+font-style:italic;
+}
+.r{
+color:crimson;
+font-size:16px;
+}
+#res{
+padding:20px;
+ 
+}
+</style>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+$(document).ready(function(){
+$('[name="group"]').change(function(){
+$('#res').html('Выбран элемент из группы радиокнопок <b>'
++$(this).attr('name').replace(/\d/,'<span class="r">$&</span>')
++'</b><br /><b>id</b> элемента = '+$(this).attr('id')
++'<br /><b>value</b> элемента = '+$(this).val());
+});
+});
+</script>
+</head>
+<body>
+<input type="radio" name="group" id="group_1_0" value="1" />1<br />
+<input type="radio" name="group" id="group_1_1" value="2" />2<br />
+<input type="radio" name="group" id="group_1_2" value="3" />3<br />
+<br />
+<input type="radio" name="group_2" id="selectRadio2" value="4" />4<br />
+<input type="radio" name="group_2" id="group_2_1" value="5" />5<br />
+<input type="radio" name="group_2" id="group_2_2" value="6" />6<br />
+<br />
+<input type="radio" name="group_3" id="group_3_0" value="7" />7<br />
+<input type="radio" name="group_3" id="group_3_1" value="8" />8<br />
+<input type="radio" name="group_3" id="group_3_2" value="9" />9<br />
+<div id="res"></div>
+</body>
+</html>

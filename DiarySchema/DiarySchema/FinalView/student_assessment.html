@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Шаблон Bootstrap 101</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+$(document).ready(function(){
+    $("#btn1").click(function(){
+        $("p").append(" <b>Appended text</b>.");
+    });
+
+    $("#btn2").click(function(){
+        $("ol").append("<li>Appended item</li>");
+    });
+    
+    $("#btn3").click(function(){
+        $(".evaluation").append("<td  style='max-width:40px;'></td>");
+		$(".time1").append("<td style='max-width:40px;'>дата</td>");
+    });
+    $("#btn4").click(function(){
+        $("table").append("<tr><td><input style='width: 20px;' type='text'></td><td><input style='width: 20px;' type='text'></td><td><input style='width: 20px;' type='text'></td></tr>");
+    });
+});
+</script>
+	<style>
+		.d{
+			border:4px double black;
+			width:500px;
+			overfkow:scroll;}
+    </style>
+  </head>
+  <body>
+  <p><!--шапрка сайта-->
+  </p>
+    <div class="container">
+    	  <div class="row show-grid">
+				<div class="col-xs-2"><img class="logotip" src="image/diary.png"></div>          	
+                <div class="col-xs-2"><h1 class="text-center">Электронный дневник</h1></div>	
+    			<div class="col-xs-2 col-xs-offset-4 text-right"><img src="image/face.jpg" class=" img-thumbnail" style="width:140px;"></div>
+                <div class="col-lg-2"><h3 class=" text-left">Фамилия<br> Имя</h3></div>
+    	  </div>
+          <!--навигация-->
+          <div class="row">
+          		<div class="navbar navbar-inverse">
+                	<div class="container">
+                    	<div class="navbar-header">
+                        	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#responsive-menu">
+                            <span class="sr-only">открыть навигацию</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <div class="collapse navbar-collapse" id="responsive-menu">
+                        	<ul class="nav navbar-nav">
+                            	<li><a href="#">Страница моя</a></li>
+                                <li><a href="student_group.html">Группа</a></li>
+                                <li><a href="#">Отметки</a></li>
+                                <li><a href="#">punkt 1</a></li>
+                            </ul>
+                       </div>
+                    </div>
+                </div>
+          </div>
+          <!--конец. навигация-->
+    </div>
+    <div class="container">
+    	<div class="row">
+        	<div  ><!-- надо сделать по центру-->
+            	<ul class="nav nav-pills">
+                	<li role="presentation" class="active" style ="width:120px; height:40px; background-color:#5CBCFA; "><h4 style="font-weight: bold">Учебный год</h4></li>
+                    
+                	<li role="presentation" class="dropdown">
+                    	<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">2016\2017<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                        	<li><a href="#">1 семестр</a></li>
+                            <li><a href="#">2 семестр</a></li>
+                        </ul>
+                     </li>
+                     <li role="presentation" class="dropdown">
+                    	<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">2017\2018<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                        	<li><a href="#">1 семестр</a></li>
+                            <li><a href="#">2 семестр</a></li>
+                        </ul>
+                     </li>
+                     <li role="presentation" class="dropdown">
+                    	<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">2019\2020<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                        	<li><a href="#">1 семестр</a></li>
+                            <li><a href="#">2 семестр</a></li>
+                        </ul>
+                     </li>
+                     <li role="presentation" class="dropdown">
+                    	<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">2020\2021<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                        	<li><a href="#">1 семестр</a></li>
+                            <li><a href="#">2 семестр</a></li>
+                        </ul>
+                     </li>
+                    
+                </ul>					
+            </div>
+        </div>
+    </div>
+ <!--конец. шапка сайта-->   
+ 	<!--Название придмета-->
+    
+    <h1 class="text-center">Журнал посещения</h1>
+    
+ <!--таблица с оценками-->
+ 	<div class="container">
+    	<div class="row">        
+	    		<!--таблица, список студентов-->
+	    		<div class="col-xs-2 indent">
+	     			<table class="container table table-bordered table-striped table-hover ">	      			
+	      				<tr style="height:76px;"><th >Предметы\дата</th></tr>
+	            		<tr style=" height:43px;"><td>Матан</td></tr>
+	            		<tr style=" height:43px;"><td>физика</td></tr>	       	
+                        <tr style=" height:43px;"><td>Физ-ра</td></tr>			
+	       			</table>
+	       		</div>
+                <!--таблица, оценки-->
+	    		<div class="col-xs-9 indent">
+                <div class="table-responsive">  
+	     			<table class="container table table-bordered table-striped table-hover ">
+	      	   			<thead>
+                        	<tr class="time1">                    		
+	                   			<td colspan='2' style="max-width:40px; height:38px; text-align:center;">Месяц</td>                                
+	                		</tr>
+	            			<tr class="time1">                    		
+	                   			<td  style="max-width:40px; height:38px;">дата</td>
+                                <td  style="max-width:40px; height:38px;">дата</td>
+	                		</tr>
+                        </thead>
+	          			<tr class="evaluation">	              			
+	               			<td  style="max-width:40px; height:43px;"></td>
+                            <td  style="max-width:40px; height:43px;"></td>
+	          			</tr>
+	          			<tr class="evaluation">	              			
+	             			<td  style="max-width:40px; height:43px;"></td>
+                            <td  style="max-width:40px; height:43px;"></td>
+	          			</tr>
+	          			<tr class="evaluation">	              			
+	               			<td  style="max-width:40px; height:43px;"></td>
+                            <td  style="max-width:40px; height:43px;"></td>
+	          			</tr>      
+					</table>
+				</div>	   		
+	      	</div>  
+            <!--тадлица, пропуски-->
+            <div class="col-xs-1 indent">
+	     			<table class="container table table-bordered table-striped table-hover ">	      			
+	      				<tr style="height:76px;"><th>Пропуски</th></tr>
+	            		<tr style=" height:43px;"><td>0 из 5</td></tr>
+	            		<tr style=" height:43px;"><td>0 из 5</td></tr>	       	
+                        <tr style=" height:43px;"><td>0 из 5</td></tr>			
+	       			</table>
+	       	</div> 
+       	</div>  
+        <h1 class="text-center">Итоговые отметки за прошлые годы</h1>        
+    <!-- навигация по экзаменационным оценкам-->
+    
+    	<div class="row">
+        	<div  ><!-- надо сделать по центру-->
+            	<ul class="nav nav-pills">
+                	<li role="presentation" class="active" style ="width:120px; height:40px; background-color:#5CBCFA; "><h4 style="font-weight: bold">Учебный год</h4></li>
+                    
+                	<li role="presentation" class="dropdown">
+                    	<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">2016\2017<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                        	<li><a href="#">1 семестр</a></li>
+                            <li><a href="#">2 семестр</a></li>
+                        </ul>
+                     </li>
+                     <li role="presentation" class="dropdown">
+                    	<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">2017\2018<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                        	<li><a href="#">1 семестр</a></li>
+                            <li><a href="#">2 семестр</a></li>
+                        </ul>
+                     </li>
+                     <li role="presentation" class="dropdown">
+                    	<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">2019\2020<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                        	<li><a href="#">1 семестр</a></li>
+                            <li><a href="#">2 семестр</a></li>
+                        </ul>
+                     </li>
+                     <li role="presentation" class="dropdown">
+                    	<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">2020\2021<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                        	<li><a href="#">1 семестр</a></li>
+                            <li><a href="#">2 семестр</a></li>
+                        </ul>
+                     </li>
+                    
+                </ul>					
+            </div>
+        </div>
+        </div>
+	<!--таблица с экзаменоционными оценками-->
+    <div class="container">
+    	<div class="row">
+       	  <div class="col-lg-6">
+                <table class="table table-hover table-bordered" style="background-color:#BDBDFD">
+                    <caption><h3>Экзамен</h3></caption>
+                    <tr>
+                        <th>Предметы</th>
+                        <th>Оценки</th>
+                    </tr>
+                    <tr>
+                    	<td>матан</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                    	<td>физика</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                    	<td>физ-ра</td>
+                        <td>5</td>
+                    </tr>
+                </table>
+            </div>
+          <div class="col-lg-6">
+                <table class="table table-hover table-bordered" style="background-color:#FF9F9F">
+                    <caption><h3>Зачет</h3></caption>
+                    <tr>
+                        <th>Предметы</th>
+                        <th >Оценки</th>
+                    </tr>
+                    <tr>
+                    	<td>Экология</td>
+                        <td>зачет</td>
+                    </tr>
+                    <tr>
+                    	<td>философия</td>
+                        <td>не зачет</td>
+                    </tr>
+                    <tr>
+                    	<td>сети</td>
+                        <td>зачет</td>
+                    </tr>
+                </table>
+            </div>
+      </div>
+         <div class="row"> 
+           <div class="col-lg-6">
+                <table class="table table-hover table-bordered" style="background-color:#8EEF81">
+                    <caption><h3>Курсовая работа</h3></caption>
+                    <tr>
+                        <th >Предметы</th>
+                        <th >Оценки</th>
+                    </tr>
+                    <tr>
+                    	<td>матан</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                    	<td>физика</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                    	<td>физ-ра</td>
+                        <td>5</td>
+                    </tr>
+                </table>
+            </div>
+             <div class="col-lg-6">
+               <table class="table table-hover table-bordered" style="background-color:#ECBC6C">
+                    <caption><h3>Практика</h3></caption>
+                    <tr>
+                        <th >Предметы</th>
+                        <th ">Оценки</th>
+                    </tr>
+                    <tr>
+                    	<td>матан</td>
+                        <td>5</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+  </div>
+    <!--Конец. таблица с оценками-->
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>

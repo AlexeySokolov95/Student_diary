@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Diary2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Groups">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Number" Type="Int32" Nullable="false" />
+    <Property Name="YearOfAdmission" Type="Int32" Nullable="false" />
+    <Property Name="Faculty" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Degree" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MonitorId" Type="Int32" />
+    <NavigationProperty Name="Students" Relationship="Self.FK_dbo_Groups_dbo_Students_StudentId" FromRole="Groups" ToRole="Students" />
+    <NavigationProperty Name="TeachersGroupsSubjects" Relationship="Self.FK_dbo_TeachersGroupsSubjects_dbo_Groups_GroupId" FromRole="Groups" ToRole="TeachersGroupsSubjects" />
+    <NavigationProperty Name="TheTasks" Relationship="Self.FK_dbo_TheTasks_dbo_Groups_GroupId" FromRole="Groups" ToRole="TheTasks" />
+  </EntityType>
+  <EntityType Name="Students">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Number" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FullName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="YearOfBirth" Type="Int32" Nullable="false" />
+    <Property Name="GroupId" Type="Int32" Nullable="false" />
+    <Property Name="FormOfStudy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Groups" Relationship="Self.FK_dbo_Groups_dbo_Students_StudentId" FromRole="Students" ToRole="Groups" />
+  </EntityType>
+  <EntityType Name="Subjects">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Departament" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="TeachersGroupsSubjects" Relationship="Self.FK_dbo_TeachersGroupsSubjects_dbo_Subjects_SubjectId" FromRole="Subjects" ToRole="TeachersGroupsSubjects" />
+  </EntityType>
+  <EntityType Name="TableOfGrades">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TeachersGroupsSubjectId" Type="Int32" Nullable="false" />
+    <Property Name="YearOfStudy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TypeOfKnowledgeControl" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Semester" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TeachersGroupsSubjects" Relationship="Self.FK_dbo_TableOfGrades_dbo_TeachersGroupsSubjects_TeachersGroupsSubjectId" FromRole="TableOfGrades" ToRole="TeachersGroupsSubjects" />
+  </EntityType>
+  <EntityType Name="Teachers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FullName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Departament" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TeachersGroupsSubjects" Relationship="Self.FK_dbo_TeachersGroupsSubjects_dbo_Teachers_TeacherId" FromRole="Teachers" ToRole="TeachersGroupsSubjects" />
+    <NavigationProperty Name="TheTasks" Relationship="Self.FK_dbo_TheTasks_dbo_Teachers_TeacherId" FromRole="Teachers" ToRole="TheTasks" />
+  </EntityType>
+  <EntityType Name="TeachersGroupsSubjects">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GroupId" Type="Int32" Nullable="false" />
+    <Property Name="SubjectId" Type="Int32" Nullable="false" />
+    <Property Name="TeacherId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Groups" Relationship="Self.FK_dbo_TeachersGroupsSubjects_dbo_Groups_GroupId" FromRole="TeachersGroupsSubjects" ToRole="Groups" />
+    <NavigationProperty Name="Subjects" Relationship="Self.FK_dbo_TeachersGroupsSubjects_dbo_Subjects_SubjectId" FromRole="TeachersGroupsSubjects" ToRole="Subjects" />
+    <NavigationProperty Name="TableOfGrades" Relationship="Self.FK_dbo_TableOfGrades_dbo_TeachersGroupsSubjects_TeachersGroupsSubjectId" FromRole="TeachersGroupsSubjects" ToRole="TableOfGrades" />
+    <NavigationProperty Name="Teachers" Relationship="Self.FK_dbo_TeachersGroupsSubjects_dbo_Teachers_TeacherId" FromRole="TeachersGroupsSubjects" ToRole="Teachers" />
+  </EntityType>
+  <EntityType Name="TheTasks">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TeacherId" Type="Int32" Nullable="false" />
+    <Property Name="TaskText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="GroupId" Type="Int32" Nullable="false" />
+    <Property Name="Documents" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Groups" Relationship="Self.FK_dbo_TheTasks_dbo_Groups_GroupId" FromRole="TheTasks" ToRole="Groups" />
+    <NavigationProperty Name="Teachers" Relationship="Self.FK_dbo_TheTasks_dbo_Teachers_TeacherId" FromRole="TheTasks" ToRole="Teachers" />
+  </EntityType>
+  <Association Name="FK_dbo_Groups_dbo_Students_StudentId">
+    <End Type="Self.Students" Multiplicity="0..1" Role="Students" />
+    <End Type="Self.Groups" Multiplicity="*" Role="Groups" />
+    <ReferentialConstraint>
+      <Principal Role="Students">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Groups">
+        <PropertyRef Name="MonitorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Students_dbo_Groups_GroupId">
+    <End Type="Self.Groups" Multiplicity="1" Role="Groups">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="Self.Students" Multiplicity="*" Role="Students" />
+    <ReferentialConstraint>
+      <Principal Role="Groups">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Students">
+        <PropertyRef Name="GroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_TeachersGroupsSubjects_dbo_Groups_GroupId">
+    <End Role="Groups" Type="Self.Groups" Multiplicity="1" />
+    <End Role="TeachersGroupsSubjects" Type="Self.TeachersGroupsSubjects" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Groups">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TeachersGroupsSubjects">
+        <PropertyRef Name="GroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_TheTasks_dbo_Groups_GroupId">
+    <End Role="Groups" Type="Self.Groups" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="TheTasks" Type="Self.TheTasks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Groups">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TheTasks">
+        <PropertyRef Name="GroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_TeachersGroupsSubjects_dbo_Subjects_SubjectId">
+    <End Role="Subjects" Type="Self.Subjects" Multiplicity="1" />
+    <End Role="TeachersGroupsSubjects" Type="Self.TeachersGroupsSubjects" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subjects">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TeachersGroupsSubjects">
+        <PropertyRef Name="SubjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_TableOfGrades_dbo_TeachersGroupsSubjects_TeachersGroupsSubjectId">
+    <End Role="TeachersGroupsSubjects" Type="Self.TeachersGroupsSubjects" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="TableOfGrades" Type="Self.TableOfGrades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TeachersGroupsSubjects">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TableOfGrades">
+        <PropertyRef Name="TeachersGroupsSubjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_TeachersGroupsSubjects_dbo_Teachers_TeacherId">
+    <End Role="Teachers" Type="Self.Teachers" Multiplicity="1" />
+    <End Role="TeachersGroupsSubjects" Type="Self.TeachersGroupsSubjects" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Teachers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TeachersGroupsSubjects">
+        <PropertyRef Name="TeacherId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_TheTasks_dbo_Teachers_TeacherId">
+    <End Role="Teachers" Type="Self.Teachers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="TheTasks" Type="Self.TheTasks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Teachers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TheTasks">
+        <PropertyRef Name="TeacherId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Diary2Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Groups" EntityType="Self.Groups" />
+    <EntitySet Name="Students" EntityType="Self.Students" />
+    <EntitySet Name="Subjects" EntityType="Self.Subjects" />
+    <EntitySet Name="TableOfGrades" EntityType="Self.TableOfGrades" />
+    <EntitySet Name="Teachers" EntityType="Self.Teachers" />
+    <EntitySet Name="TeachersGroupsSubjects" EntityType="Self.TeachersGroupsSubjects" />
+    <EntitySet Name="TheTasks" EntityType="Self.TheTasks" />
+    <AssociationSet Name="FK_dbo_Groups_dbo_Students_StudentId" Association="Self.FK_dbo_Groups_dbo_Students_StudentId">
+      <End EntitySet="Students" Role="Students" />
+      <End EntitySet="Groups" Role="Groups" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Students_dbo_Groups_GroupId" Association="Self.FK_dbo_Students_dbo_Groups_GroupId">
+      <End EntitySet="Groups" Role="Groups" />
+      <End EntitySet="Students" Role="Students" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_TeachersGroupsSubjects_dbo_Groups_GroupId" Association="Self.FK_dbo_TeachersGroupsSubjects_dbo_Groups_GroupId">
+      <End Role="Groups" EntitySet="Groups" />
+      <End Role="TeachersGroupsSubjects" EntitySet="TeachersGroupsSubjects" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_TheTasks_dbo_Groups_GroupId" Association="Self.FK_dbo_TheTasks_dbo_Groups_GroupId">
+      <End Role="Groups" EntitySet="Groups" />
+      <End Role="TheTasks" EntitySet="TheTasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_TeachersGroupsSubjects_dbo_Subjects_SubjectId" Association="Self.FK_dbo_TeachersGroupsSubjects_dbo_Subjects_SubjectId">
+      <End Role="Subjects" EntitySet="Subjects" />
+      <End Role="TeachersGroupsSubjects" EntitySet="TeachersGroupsSubjects" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_TableOfGrades_dbo_TeachersGroupsSubjects_TeachersGroupsSubjectId" Association="Self.FK_dbo_TableOfGrades_dbo_TeachersGroupsSubjects_TeachersGroupsSubjectId">
+      <End Role="TeachersGroupsSubjects" EntitySet="TeachersGroupsSubjects" />
+      <End Role="TableOfGrades" EntitySet="TableOfGrades" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_TeachersGroupsSubjects_dbo_Teachers_TeacherId" Association="Self.FK_dbo_TeachersGroupsSubjects_dbo_Teachers_TeacherId">
+      <End Role="Teachers" EntitySet="Teachers" />
+      <End Role="TeachersGroupsSubjects" EntitySet="TeachersGroupsSubjects" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_TheTasks_dbo_Teachers_TeacherId" Association="Self.FK_dbo_TheTasks_dbo_Teachers_TeacherId">
+      <End Role="Teachers" EntitySet="Teachers" />
+      <End Role="TheTasks" EntitySet="TheTasks" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

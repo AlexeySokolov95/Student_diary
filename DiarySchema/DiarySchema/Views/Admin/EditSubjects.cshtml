@@ -1,0 +1,97 @@
+﻿@model DiarySchema.Models.Subjects
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdminAdd.cshtml";
+}
+
+<main>
+    <div class="row" style="padding-top: 30px;padding-bottom: 30px;">
+        <div class="container">
+            <h1 align="center">Предмет</h1>
+            <div class="container col-xs-6 col-xs-offset-3" style="border:solid; background-color:#93FE83; padding:10px; border-radius: 20px;">
+                @using (Html.BeginForm("EditSubjects", "Admin", FormMethod.Post, new { name = "ValidationForm", role = "form", data_toggle = "validator", novalidate = "true", id = "addAdmin" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(model => model.Id)                    
+                    <div class="form-group">
+                        <label class="control-label col-xs-6" for="Name">Название предмета:</label>
+                        <div class="col-xs-6">
+                            <input type="text" value="@Model.Name" class="form-control" id="Name" name="Name" placeholder="№" required pattern="^[А-Яа-яЁё\s]+$" title="Ввод только руcскими буквами" data-error="Ввод только руcскими буквами">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-6" for="Departament">Кафедра:</label>
+                        <div class="col-xs-6">
+                            @Html.EditorFor(model => model.Departament, new { htmlAttributes = new { @class = "form-control", required="required", data_error = "Введите кафедру" } })
+                            @*<select class="form-control" id="Departament" name="Departament" placeholder="Введите кафедру" required pattern="\D[^1]" title="Введите кафедру" data-error="Введите кафедру">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                            </select>*@
+                            @*<input type="text" class="form-control" id="Departament" name="Departament" placeholder="Введите Ф. И. О." required pattern="^[А-Яа-яЁё\s]+$" title="Ввод только руcскими буквами" data-error="Ввод только руcскими буквами">*@
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-xs-offset-6">
+                        <input type="submit" value="Save" class="btn btn-default" />
+                        <button type="submit" value="Save" class="btn btn-primary">Отправить</button>
+                        @*<button type="submit" class="btn btn-danger" id="addYet">Добавить еще</button>
+                        <button type="reset" class="btn btn-default" id='reset'>Очисить форму</button>*@
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</main>
+
+
+@*<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>EditSubjects</title>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        
+        <div class="form-horizontal">
+            <h4>Subjects</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id)
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.Departament, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Departament, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Departament, "", new { @class = "text-danger" })
+                </div>
+            </div>
+    
+            <div class="form-group">
+
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+    
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</body>
+</html>*@

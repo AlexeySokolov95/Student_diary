@@ -1,0 +1,38 @@
+﻿
+@{
+    Layout = null;
+}
+@model DiarySchema.ViewModel.StudentRegisterViewModel
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>StudentRegister</title>
+</head>
+<body>
+@using (Html.BeginForm())
+{<p>Имя</p>
+    @Html.EditorFor(model => model.FirstName)
+    <p>Фамилия</p>
+    @Html.EditorFor(model => model.SecondName)
+    <p>Отчество</p>
+    @Html.EditorFor(model => model.MiddleName)
+    <p>Номер студенческого</p>
+        @Html.EditorFor(model => model.CardNumber)
+    <p>Дата рождения</p>
+        @Html.EditorFor(model => model.DateOfBirth)
+    <p>Группа</p>
+        @Html.DropDownListFor(m => Model.GroupId, ViewBag.Groups as SelectList)
+    <p>Email</p>
+        @Html.EditorFor(model => model.Email)
+    <p>Login</p>
+        @Html.EditorFor(model => model.Login)
+    <p>Пороль</p>
+        @Html.EditorFor(model => model.Password)
+    <p>Потверждения пороля</p>
+        @Html.EditorFor(model => model.PasswordConfirm)
+        <input type="submit" value="Create" class="btn btn-default" /> }
+
+    </body>
+</html>

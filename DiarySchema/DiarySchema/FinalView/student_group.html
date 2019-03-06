@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Шаблон Bootstrap 101</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script  type="text/javascript" src="js/jquery-3.2.0.js"></script>
+	<script  type="text/javascript" src="js/js.js"></script>
+    <script>
+$(document).ready(function(){
+    $("#btn1").click(function(){
+        $("p").append(" <b>Appended text</b>.");
+    });
+
+    $("#btn2").click(function(){
+        $("ol").append("<li>Appended item</li>");
+    });
+    
+    $("#btn3").click(function(){
+        $(".evaluation").append("<td  style='max-width:40px;'></td>");
+		$(".time1").append("<td style='max-width:40px;'>дата</td>");
+    });
+    $("#btn4").click(function(){
+        $("table").append("<tr><td><input style='width: 20px;' type='text'></td><td><input style='width: 20px;' type='text'></td><td><input style='width: 20px;' type='text'></td></tr>");
+    });
+});
+</script>
+	<style>
+		.d{
+			border:4px double black;
+			width:500px;
+			overfkow:scroll;}
+    </style>
+  </head>
+  <body>
+  <p><!--шапрка сайта-->
+  </p>
+    <div class="container">
+    	  <div class="row show-grid">
+				<div class="col-xs-2"><img class="logotip" src="image/diary.png"></div>          	
+                <div class="col-xs-2"><h1 class="text-center">Электронный дневник</h1></div>	
+    			<div class="col-xs-2 col-xs-offset-4 text-right">
+                	<div class="imgHead">
+                        	<a href="#" >
+                    			<div class="img-container1"> 
+                    				<img src="image/face.jpg" alt="лицо отправителя сообщения">
+                    		    </div>
+                            	
+                            </a>
+                             
+                    	</div>
+                   </div>
+                <div class="col-lg-2"><h3 class=" text-left">Фамилия<br> Имя</h3></div>
+    	  </div>
+          <!--навигация-->
+          <div class="row">
+          		<div class="navbar navbar-inverse">
+                	<div class="container">
+                    	<div class="navbar-header">
+                        	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#responsive-menu">
+                            <span class="sr-only">открыть навигацию</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <div class="collapse navbar-collapse" id="responsive-menu">
+                        	<ul class="nav navbar-nav">
+                            	<li><a href="#">Страница моя</a></li>
+                                <li><a href="#">Группа</a></li>
+                                <li><a href="student_assessment.html">Отметки</a></li>
+                                <li><a href="#">punkt 1</a></li>
+                            </ul>
+                       </div>
+                    </div>
+                </div>
+          </div>
+          <!--конец. навигация-->
+    </div>
+ <!--конец. шапка сайта-->   
+ <!--группа. название гр. фото группы.переписка группы-->
+ 	<div class="container">
+ 		<p ><h1 align="center">Группа <strong>1490</strong></h1></p><!--название группы-->
+        <div class="row">
+        	<div class="col-xs-3">
+        		<img src="image/group.jpg" alt="Группа" class="img-thumbnail"  style="margin-left:40px;"><!--фото группы-->
+                 <p style="margin-left:40px; margin-top:20px;">№ группы:<strong>1490</strong><br>
+                 	Факультет:<strong>ФКиО</strong><br>
+                    вид обучения:<strong>Бакалавриат</strong>                    
+                 </p>
+            </div> 
+            <div class="col-xs-8 " style="margin-left:50px;">
+                 	
+                    <a href="#" >
+                    <div class="imgMessages"> 
+                        	
+                    			<div class="img-container"> 
+                    				<img src="image/face.jpg" alt="Лицо отправителя" width="125">
+                    		    </div>                            	
+                                                           
+                    </div>
+                    <div style="float:left; margin-top:60px;"> Юрьев Игорь</div> </a>
+                    
+                                  
+                
+                	<textarea class="form-control" rows="4" ></textarea>
+               		<button type="button" class="btn btn-warning" style="margin-top:10px;" ><span class="glyphicon glyphicon-paperclip"></span> Прекрипить файл </button>
+                    <br>
+                    <button type="button" class="btn btn-info btn-lg" style="margin-top:10px;"><span class="glyphicon glyphicon-send" style="margin-right:5px;"></span>отправить сообщение</button>
+             <div class="messages"> 
+              <div class="row">                
+                	<div class="col-xs-3 "><!--картика, ФИ, время отправки сообщения-->
+                   <div class="imgMessages">
+                        	<a href="#" >
+                    			<div class="img-container"> 
+                    				<img src="image/alex.jpg" alt="лицо отправителя сообщения">
+                    		    </div>
+                            	Алексей Соколов <br>
+                            </a>
+                            2017-12-20    
+                   	  </div>
+                    </div>
+                    <div class="col-xs-9"><!--сообщение и прекрепленный файл-->
+                    	<div class="messages-text"> 
+                        	какой-то текст какой-то текст какой-то текст какой-то текст какой-то текст какой-то текст какой-то текст какой-то текст какой-то текст какой-то текст какой-то текст какой-то текст какой-то текст какой-то текст какой-то текст какой-то текст какой-то текст какой-то текст какой-то текст какой-то текст какой-то текст какой-то текст какой-то текст                            
+                        </div>
+                        <div class=" alert alert-success download-document">
+                        	Название документа<br>
+                            <button type="button" class="btn btn-success btn-sm" style="margin-top:15px;"><span class="glyphicon glyphicon-floppy-save" style="margin-right:10px;"></span>Скачать</button>
+                        </div>
+                    </div>                   
+               </div> 
+
+              
+             </div>   
+             <div class="messages"> 
+              <div class="row">                
+                	<div class="col-xs-3 "><!--картика, ФИ, время отправки сообщения-->
+                    <div class="imgMessages">
+                        	<a href="#" >
+                    			<div class="img-container"> 
+                    				<img src="image/alex.jpg" alt="лицо отправителя сообщения">
+                    		    </div>
+                            	Алексей Соколов <br>
+                            </a>
+                            2017-12-20    
+                   	  </div>
+                    </div>
+                    <div class="col-xs-9"><!--сообщение и прекрепленный файл-->
+                    	<div class="messages-text"> 
+                        	какой-то текст какой-то текст какой-то текст какой-то текст какой-то текст какой-то текст какой-то текст какой-то текст какой-то текст какой-то текст какой-то текст какой-то текст какой-то текст какой-то текст какой-то текст какой-то текст какой-то текст какой-то текст какой-то текст какой-то текст какой-то текст какой-то текст какой-то текст                            
+                        </div>
+                        <div class=" alert alert-success download-document">
+                        	Название документа<br>
+                            <button type="button" class="btn btn-success btn-sm" style="margin-top:15px;"><span class="glyphicon glyphicon-floppy-save" style="margin-right:10px;"></span>Скачать</button>
+                        </div>
+                    </div>                   
+               </div> 
+
+              
+             </div>               
+             <div class="messages"> 
+              <div class="row">                
+                	<div class="col-xs-3 "><!--картика, ФИ, время отправки сообщения-->
+                    	<div class="imgMessages">
+                        	<a href="#" >
+                    			<div class="img-container"> 
+                    				<img src="image/alex.jpg" alt="лицо отправителя сообщения">
+                    		    </div>
+                            	Алексей Соколов <br>
+                            </a>
+                            2017-12-20    
+                    	</div>
+                    </div>
+                    <div class="col-xs-9"><!--сообщение и прекрепленный файл-->
+                    	<div class="messages-text"> 
+                        	какой-то текст какой-то текст какой-то текст какой-то текст какой-то текст какой-то текст какой-то текст какой-то текст какой-то текст какой-то текст какой-то текст какой-то текст какой-то текст какой-то текст какой-то текст какой-то текст какой-то текст какой-то текст какой-то текст какой-то текст какой-то текст какой-то текст какой-то текст                            
+                        </div>
+                        <div class=" alert alert-success download-document">
+                        	Название документа<br>
+                            <button type="button" class="btn btn-success btn-sm" style="margin-top:15px;"><span class="glyphicon glyphicon-floppy-save" style="margin-right:10px;"></span>Скачать</button>
+                        </div>
+                    </div>                   
+               </div> 
+
+              
+             </div>  <!--kones-->                           
+             
+        </div>
+	</div>
+	</div>
+     <!--Конец. группа. название гр. фото группы.переписка группы-->
+    
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>

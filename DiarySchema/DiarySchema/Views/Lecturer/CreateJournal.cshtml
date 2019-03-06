@@ -1,0 +1,56 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LayoutAdminAdd.cshtml";
+}
+<style>
+    input{
+        width:15px;
+        height:15px;
+    }
+</style>
+<main>
+    <div class="container">
+        <div class="col-xs-6 col-xs-offset-3">
+            <div class="row">
+                @using (Html.BeginForm())
+            {
+                    @Html.Hidden("groupId", (int)ViewBag.GroupId);
+                    @Html.Hidden("subjectId", (int)ViewBag.SubjectId);
+                    <table class="table table-bordered">
+                        <caption>Дни занятий предмета</caption>
+                        <tr>
+                            <th></th>
+                            <th>Понедельник</th>
+                            <th>Вторник</th>
+                            <th>Среда </th>
+                            <th>Четверг</th>
+                            <th>Пятница</th>
+                            <th>Суббота</th>
+                        </tr>
+                        <tr>
+                            <th>Знаминатель</th>
+                            <td>@Html.CheckBox("numerator")</td>
+                            <td>@Html.CheckBox("numerator")</td>
+                            <td>@Html.CheckBox("numerator")</td>
+                            <td>@Html.CheckBox("numerator")</td>
+                            <td>@Html.CheckBox("numerator")</td>
+                            <td>@Html.CheckBox("numerator")</td>
+                            <td>@Html.CheckBox("numerator")</td>
+                        </tr>
+                        <tr>
+                            <th>Числитель</th>
+                            <td>@Html.CheckBox("denominator")</td>
+                            <td>@Html.CheckBox("denominator")</td>
+                            <td>@Html.CheckBox("denominator")</td>
+                            <td>@Html.CheckBox("denominator")</td>
+                            <td>@Html.CheckBox("denominator")</td>
+                            <td>@Html.CheckBox("denominator")</td>
+                            <td>@Html.CheckBox("denominator")</td>
+                        </tr>
+                    </table>                    
+                    <button type="submit" class="btn btn-danger btn-block" style="margin-bottom:30px;">Создать журнал</button>                    
+                }
+            </div>
+        </div>
+    </div>
+</main>
